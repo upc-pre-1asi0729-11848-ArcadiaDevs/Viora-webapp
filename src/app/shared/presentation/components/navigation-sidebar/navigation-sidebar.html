@@ -1,0 +1,43 @@
+<div class="dashboard-sidebar" [class.is-collapsed]="collapsed">
+  <!-- Collapse Trigger -->
+  <button class="collapse-button" (click)="toggleSidebar()" type="button">
+    <span *ngIf="!collapsed">‹</span>
+    <span *ngIf="collapsed">›</span>
+  </button>
+
+  <!-- Brand Section -->
+  <div class="sidebar-brand">
+    <img class="brand-logo" src="/assets/icons/logo.svg" alt="Viora Logo" *ngIf="!collapsed || collapsed">
+    <strong *ngIf="!collapsed">Viora</strong>
+  </div>
+
+  <!-- Main Navigation -->
+  <nav class="sidebar-nav">
+    <div class="nav-group">
+      <a *ngFor="let item of mainItems" class="nav-item" [class.is-active]="isRouteActive(item.route)" [routerLink]="item.route">
+        <div class="nav-icon" [style]="getIconStyle(item.iconPath)"></div>
+        <span class="nav-label" *ngIf="!collapsed">{{ item.label }}</span>
+      </a>
+    </div>
+
+    <!-- Secondary Items (Settings, etc.) -->
+    <div class="nav-group secondary">
+      <a *ngFor="let item of secondaryItems" class="nav-item" [class.is-active]="isRouteActive(item.route)" [routerLink]="item.route">
+        <div class="nav-icon" [style]="getIconStyle(item.iconPath)"></div>
+        <span class="nav-label" *ngIf="!collapsed">{{ item.label }}</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- User Section -->
+  <div class="sidebar-user">
+    <div class="user-avatar-placeholder" *ngIf="!collapsed || collapsed">
+      <span>U</span>
+    </div>
+    <div class="user-info" *ngIf="!collapsed">
+      <span>User</span>
+      <strong>John Doe</strong>
+    </div>
+    <a class="user-action" href="#" *ngIf="!collapsed">Logout</a>
+  </div>
+</div>
