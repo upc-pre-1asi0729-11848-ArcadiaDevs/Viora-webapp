@@ -1,100 +1,97 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
+
 import { CommonModule } from '@angular/common';
+import { Router, RouterModule } from '@angular/router';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-navigation-sidebar',
   standalone: true,
-  imports: [CommonModule, RouterModule],
-  templateUrl: './navigation-sidebar.html',
-  styleUrls: ['./navigation-sidebar.css']
+  imports: [CommonModule, RouterModule, TranslateModule],
+  templateUrl: './navigation-sidebar.component.html',
+  styleUrls: ['./navigation-sidebar.component.scss'],
 })
 export class NavigationSidebarComponent {
-  @Input() collapsed = false;
+  @Input() collapsed: boolean = false;
+
   @Output() collapsedChange = new EventEmitter<boolean>();
 
-  constructor(private router: Router, private translate: TranslateService) {}
+  constructor(
+    private router: Router,
+    private translate: TranslateService,
+  ) {}
 
-  /** Toggle the sidebar state */
-  toggleSidebar() {
+  toggleSidebar(): void {
     this.collapsedChange.emit(!this.collapsed);
   }
 
-  /** Sidebar navigation structure */
-  get mainItems() {
-    return [
-      {
-        label: this.translate.instant('dashboard.sidebar.dashboard'),
-        route: '/dashboard',
-        iconPath: '/assets/icons/dashboard/grid-outline.svg'
-      },
-      {
-        label: this.translate.instant('dashboard.sidebar.my-plots'),
-        route: '/plots',
-        iconPath: '/assets/icons/dashboard/file-tray-stacked-outline.svg'
-      },
-      {
-        label: this.translate.instant('dashboard.sidebar.iot-devices'),
-        route: '/agronomic/iot-devices',
-        iconPath: '/assets/icons/dashboard/construct-outline.svg'
-      },
-      {
-        label: this.translate.instant('dashboard.sidebar.alerts'),
-        route: '/alerts',
-        iconPath: '/assets/icons/dashboard/megaphone-outline.svg'
-      },
-      {
-        label: this.translate.instant('dashboard.sidebar.dynamic-nutrition'),
-        route: '/dynamic-nutrition',
-        iconPath: '/assets/icons/dashboard/leaf-outline.svg'
-      },
-      {
-        label: this.translate.instant('dashboard.sidebar.pest-surveillance'),
-        route: '/pest-surveillance',
-        iconPath: '/assets/icons/dashboard/bug-outline.svg'
-      },
-      {
-        label: this.translate.instant('dashboard.sidebar.expert-assistance'),
-        route: '/expert-assistance',
-        iconPath: '/assets/icons/dashboard/people-outline.svg'
-      },
-      {
-        label: this.translate.instant('dashboard.sidebar.expense-history'),
-        route: '/expense-history',
-        iconPath: '/assets/icons/dashboard/sync-outline.svg'
-      }
-    ];
-  }
+  mainItems = [
+    {
+      label: 'dashboard.sidebar.dashboard',
+      route: '/dashboard',
+      iconPath: '/assets/icons/dashboard/grid-outline.svg',
+    },
+    {
+      label: 'dashboard.sidebar.my-plots',
+      route: '/plots',
+      iconPath: '/assets/icons/dashboard/file-tray-stacked-outline.svg',
+    },
+    {
+      label: 'dashboard.sidebar.iot-devices',
+      route: '/agronomic/iot-devices',
+      iconPath: '/assets/icons/dashboard/construct-outline.svg',
+    },
+    {
+      label: 'dashboard.sidebar.alerts',
+      route: '/alerts',
+      iconPath: '/assets/icons/dashboard/megaphone-outline.svg',
+    },
+    {
+      label: 'dashboard.sidebar.dynamic-nutrition',
+      route: '/dynamic-nutrition',
+      iconPath: '/assets/icons/dashboard/leaf-outline.svg',
+    },
+    {
+      label: 'dashboard.sidebar.pest-surveillance',
+      route: '/pest-surveillance',
+      iconPath: '/assets/icons/dashboard/bug-outline.svg',
+    },
+    {
+      label: 'dashboard.sidebar.expert-assistance',
+      route: '/expert-assistance',
+      iconPath: '/assets/icons/dashboard/people-outline.svg',
+    },
+    {
+      label: 'dashboard.sidebar.expense-history',
+      route: '/expense-history',
+      iconPath: '/assets/icons/dashboard/sync-outline.svg',
+    },
+  ];
 
-  get secondaryItems() {
-    return [
-      {
-        label: this.translate.instant('dashboard.sidebar.settings'),
-        route: '/settings',
-        iconPath: '/assets/icons/dashboard/settings-outline.svg'
-      },
-      {
-        label: this.translate.instant('dashboard.sidebar.subscription'),
-        route: '/subscription',
-        iconPath: '/assets/icons/dashboard/diamond-outline.svg'
-      },
-      {
-        label: this.translate.instant('dashboard.sidebar.support'),
-        route: '/support',
-        iconPath: '/assets/icons/dashboard/information-circle-outline.svg'
-      }
-    ];
-  }
+  secondaryItems = [
+    {
+      label: 'dashboard.sidebar.settings',
+      route: '/settings',
+      iconPath: '/assets/icons/dashboard/settings-outline.svg',
+    },
+    {
+      label: 'dashboard.sidebar.subscription',
+      route: '/subscription',
+      iconPath: '/assets/icons/dashboard/diamond-outline.svg',
+    },
+    {
+      label: 'dashboard.sidebar.support',
+      route: '/support',
+      iconPath: '/assets/icons/dashboard/information-circle-outline.svg',
+    },
+  ];
 
-  /** Utility to generate icon mask style */
-  getIconStyle(path: string) {
+  getIconStyle(path: string): { [key: string]: string } {
     return {
-      '--icon-url': `url("${path}")`
+      '--icon-url': `url("${path}")`,
     };
   }
 
-  /** Active route check */
   isRouteActive(targetPath: string): boolean {
     return this.router.url === targetPath;
   }
