@@ -1,0 +1,17 @@
+export const environment = {
+  production: true,
+  platformProviderApiBaseUrl: 'https://69ff99d02b7ab349602fc9e2.mockapi.io/api/v1',
+  platformProviderPlotsEndpointPath: '/plots',
+  platformProviderAgronomicRecordsEndpointPath: '/agronomic-records',
+  platformProviderMonitoringSummariesEndpointPath: '/monitoring-summaries',
+  platformProviderWeatherSummariesEndpointPath: '/weather-summaries',
+  platformProviderYieldForecastsEndpointPath: '/yield-forecasts',
+  platformProviderRiskAssessmentsEndpointPath: '/risk-assessments',
+  platformProviderHealthDistributionEndpointPath: '/health-distribution',
+  platformProviderSignUpEndpointPath: '/authentication/sign-up',
+  platformProviderSignInEndpointPath: '/authentication/sign-in',
+  platformProviderUsersEndpointPath: '/users',
+  platformProviderAgronomicStatisticsEndpointPath: '/agronomic-statistics',
+  platformProviderAlertsEndpointPath: '/alerts',
+  platformProviderIotDevicesEndpointPath: '/iot-devices',
+};
