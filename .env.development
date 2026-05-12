@@ -1,0 +1,17 @@
+ export const environment = {
+     production: false,
+     platformProviderApiBaseUrl: 'http://localhost:3000/api/v1',
+     platformProviderPlotsEndpointPath: '/plots',
+     platformProviderAgronomicRecordsEndpointPath: '/agronomic-records',
+     platformProviderMonitoringSummariesEndpointPath: '/monitoring-summaries',
+     platformProviderWeatherSummariesEndpointPath: '/weather-summaries',
+     platformProviderYieldForecastsEndpointPath: '/yield-forecasts',
+     platformProviderRiskAssessmentsEndpointPath: '/risk-assessments',
+     platformProviderHealthDistributionEndpointPath: '/health-distribution',
+     platformProviderSignUpEndpointPath: '/authentication/sign-up',
+     platformProviderSignInEndpointPath: '/authentication/sign-in',
+     platformProviderUsersEndpointPath: '/users',
+     platformProviderAgronomicStatisticsEndpointPath: '/agronomic-statistics',
+     platformProviderAlertsEndpointPath: '/alerts',
+     platformProviderIotDevicesEndpointPath: '/iot-devices',
+ };
