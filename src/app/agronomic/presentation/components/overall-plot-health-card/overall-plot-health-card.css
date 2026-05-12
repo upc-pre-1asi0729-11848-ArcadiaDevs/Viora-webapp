@@ -1,0 +1,44 @@
+.kpi-card {
+  height: 186px;
+  background: #FFFFFF;
+  box-sizing: border-box;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(31, 37, 35, 0.05);
+}
+
+h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+p {
+  margin: 4px 0 16px;
+  color: #68706b;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
+  padding: 4px 14px;
+  border-radius: 999px;
+  background: #57EBA1;
+  color: #17432f;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.status-pill.muted {
+  background: #eeeeee;
+  color: #777777;
+}
+
+.card-footer {
+  margin-top: 28px;
+  padding-top: 14px;
+  border-top: 1px solid #eeeeee;
+  color: #8a8f8b;
+  font-size: 13px;
+}
