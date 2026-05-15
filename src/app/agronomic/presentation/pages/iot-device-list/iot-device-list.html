@@ -1,0 +1,100 @@
+<app-dashboard-header
+  [breadcrumbs]="breadcrumbs"
+  [subtitle]="'iotList.subtitle' | translate"
+  (refresh)="agronomicStore.fetchDevices()"
+  [updatedLabel]="'iotList.liveData' | translate">
+</app-dashboard-header>
+
+  <section class="iot-list-toolbar">
+    <a mat-stroked-button routerLink="/producer/dashboard">
+      <mat-icon>arrow_back</mat-icon>
+      {{ 'common.backToDashboard' | translate }}
+    </a>
+
+    <a mat-stroked-button class="create-button" routerLink="/producer/iot-devices/new">
+      <mat-icon>add</mat-icon>
+      {{ 'dashboard.addIotDevice' | translate }}
+    </a>
+  </section>
+
+  <mat-card class="table-card">
+    <section class="table-header">
+      <span>{{ 'iotList.name' | translate }}</span>
+      <span>{{ 'alerts.plot' | translate }}</span>
+      <span>{{ 'cards.iot.soilMoisture' | translate }}</span>
+      <span>{{ 'cards.iot.soilTemperature' | translate }}</span>
+      <span>{{ 'iotList.leafHumidity' | translate }}</span>
+      <span>{{ 'alerts.status' | translate }}</span>
+      <span>{{ 'iotList.actions' | translate }}</span>
+    </section>
+
+    @if (agronomicStore.devicesLoaded()) {
+      @for (device of paginatedDevices(); track device.id) {
+        <article class="table-row">
+          <div class="device-cell">
+            <span class="device-icon">
+              <mat-icon>memory</mat-icon>
+            </span>
+
+            <div>
+              <strong>{{ device.name }}</strong>
+              <p>ID: {{ device.id }} &middot; {{ device.formattedLastUpdate }}</p>
+            </div>
+          </div>
+
+          <strong class="plot-name">
+            {{ getPlotName(device.plotId) }}
+          </strong>
+
+          <span [class.warning-value]="device.soilMoisture < 20">
+            {{ device.soilMoistureLabel }}
+          </span>
+
+          <span>{{ device.temperatureLabel }}</span>
+
+          <span>{{ device.leafHumidityLabel }}</span>
+
+          <span class="status-pill" [class]="getStatusClass(device)">
+            {{ device.status }}
+          </span>
+
+          <div class="actions-cell">
+            <a mat-icon-button [routerLink]="['/producer/iot-devices', device.id, 'edit']">
+              <mat-icon>edit</mat-icon>
+            </a>
+
+            <button mat-icon-button type="button" (click)="deleteDevice(device)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+        </article>
+      }
+
+      @if (agronomicStore.devices().length === 0) {
+        <section class="empty-state">
+          {{ 'iotList.empty' | translate }}
+        </section>
+      }
+    } @else {
+      <section class="empty-state">
+        {{ 'cards.iot.loading' | translate }}...
+      </section>
+    }
+
+    <mat-paginator
+      [length]="agronomicStore.devices().length"
+      [pageSize]="pageSize()"
+      [pageSizeOptions]="[5, 10, 20]"
+      (page)="onPageChange($event)">
+    </mat-paginator>
+  </mat-card>
+
+  @if (agronomicStore.errors().length > 0) {
+    <section class="error-box">
+      <strong>{{ 'common.somethingWrong' | translate }}</strong>
+
+      @for (error of agronomicStore.errors(); track $index) {
+        <p>{{ error }}</p>
+      }
+    </section>
+  }

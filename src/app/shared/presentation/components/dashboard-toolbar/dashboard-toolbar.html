@@ -1,0 +1,72 @@
+<section class="dashboard-toolbar">
+  <div class="view-buttons">
+    @for (option of viewOptions; track option.id) {
+      @if (option.route) {
+        <a
+          mat-stroked-button
+          [routerLink]="option.route"
+          [class.is-active]="option.active"
+          [class.is-disabled]="option.disabled"
+          (click)="selectView(option)">
+          @if (option.iconPath) {
+            <span
+              class="toolbar-icon"
+              [style.--icon-url]="getIconMask(option.iconPath)">
+            </span>
+          } @else if (option.icon) {
+            <mat-icon>{{ option.icon }}</mat-icon>
+          }
+
+          {{ option.labelKey ? (option.labelKey | translate) : option.label }}
+        </a>
+      } @else {
+        <button
+          mat-stroked-button
+          type="button"
+          [class.is-active]="option.active"
+          [disabled]="option.disabled"
+          (click)="selectView(option)">
+          @if (option.iconPath) {
+            <span
+              class="toolbar-icon"
+              [style.--icon-url]="getIconMask(option.iconPath)">
+            </span>
+          } @else if (option.icon) {
+            <mat-icon>{{ option.icon }}</mat-icon>
+          }
+
+          {{ option.labelKey ? (option.labelKey | translate) : option.label }}
+        </button>
+      }
+    }
+  </div>
+
+  <div class="filter-buttons">
+    <mat-select
+      class="scope-select"
+      [value]="selectedScope"
+      [attr.aria-label]="'toolbar.selectScope' | translate"
+      (selectionChange)="onScopeSelected($event)">
+
+      @for (option of scopeOptions; track option.value) {
+        <mat-option [value]="option.value">
+          {{ option.labelKey ? (option.labelKey | translate) : option.label }}
+
+          @if (option.badge !== undefined) {
+            <span class="scope-badge">{{ option.badge }}</span>
+          }
+        </mat-option>
+      }
+    </mat-select>
+
+    @for (option of timeRangeOptions; track option.value) {
+      <button
+        mat-stroked-button
+        type="button"
+        [class.is-active]="selectedTimeRange === option.value"
+        (click)="selectTimeRange(option.value)">
+        {{ option.labelKey ? (option.labelKey | translate) : option.label }}
+      </button>
+    }
+  </div>
+</section>

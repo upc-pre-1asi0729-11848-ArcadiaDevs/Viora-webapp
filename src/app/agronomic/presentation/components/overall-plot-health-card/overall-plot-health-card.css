@@ -10,11 +10,16 @@
 h2 {
   margin: 0;
   font-size: 18px;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
 }
 
 p {
   margin: 4px 0 16px;
-  color: #68706b;
+  color: #4F4F4F;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: 'Poppins', sans-serif;
 }
 
 .status-pill {
@@ -26,8 +31,9 @@ p {
   border-radius: 999px;
   background: #57EBA1;
   color: #17432f;
-  font-weight: 700;
-  font-size: 13px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
 }
 
 .status-pill.muted {
@@ -39,6 +45,8 @@ p {
   margin-top: 28px;
   padding-top: 14px;
   border-top: 1px solid #eeeeee;
-  color: #8a8f8b;
-  font-size: 13px;
+  color: #8C877F;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
 }

@@ -1,4 +1,9 @@
-﻿export type ChillHourRecordId = number | string | null;
+/**
+ * @file chill-hour-record.entity.ts
+ * @description Domain entity representing chill hour accumulation records.
+ */
+
+export type ChillHourRecordId = number | string | null;
 
 export type ChillHourRecordPlotId = number | string | null;
 
@@ -19,6 +24,15 @@ export class ChillHourRecord {
   readonly threshold: number;
   readonly generatedAt: string;
 
+  /**
+   * @param {ChillHourRecordProperties} params - Entity data.
+   * @param {ChillHourRecordId} [params.id] - Unique identifier.
+   * @param {ChillHourRecordPlotId} [params.plotId] - Associated plot ID.
+   * @param {number} [params.accumulatedChillPortions] - Accumulated CP.
+   * @param {number} [params.weeklyDiff] - Weekly difference in CP.
+   * @param {number} [params.threshold] - Target threshold for CP.
+   * @param {string} [params.generatedAt] - Record generation timestamp.
+   */
   constructor({
                 id = null,
                 plotId = null,

@@ -1,0 +1,166 @@
+<app-dashboard-header
+  [breadcrumbs]="breadcrumbs"
+  [subtitle]="(isEdit ? 'iotForm.editSubtitle' : 'iotForm.newSubtitle') | translate"
+  (refresh)="loadReferenceData()"
+  [updatedLabel]="'iotForm.formMode' | translate">
+</app-dashboard-header>
+
+  <section class="form-page-actions">
+    <a mat-stroked-button routerLink="/producer/iot-devices">
+      <mat-icon>arrow_back</mat-icon>
+      {{ 'iotForm.backToIot' | translate }}
+    </a>
+  </section>
+
+  <mat-card class="form-card">
+    <form [formGroup]="form" (ngSubmit)="saveDevice()">
+      <section class="form-section">
+        <header class="section-title">
+          <mat-icon>info</mat-icon>
+          <span>{{ 'iotForm.generalInfo' | translate }}</span>
+        </header>
+
+        <div class="form-row">
+          <label for="name">{{ 'iotForm.deviceName' | translate }}</label>
+
+          <mat-form-field appearance="outline">
+            <input
+              id="name"
+              matInput
+              formControlName="name"
+              [placeholder]="'iotForm.devicePlaceholder' | translate">
+
+            @if (hasFieldError('name')) {
+              <mat-error>{{ 'iotForm.deviceNameRequired' | translate }}</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="form-row">
+          <label for="plotId">{{ 'alerts.plot' | translate }}</label>
+
+          <mat-form-field appearance="outline">
+            <mat-select id="plotId" formControlName="plotId" [placeholder]="'plotOverview.selectPlot' | translate">
+              @for (plot of agronomicStore.plots(); track plot.id) {
+                <mat-option [value]="plot.id">
+                  {{ plot.name }}
+                </mat-option>
+              }
+            </mat-select>
+
+            @if (hasFieldError('plotId')) {
+              <mat-error>{{ 'iotForm.plotRequired' | translate }}</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="form-row">
+          <label for="status">{{ 'alerts.status' | translate }}</label>
+
+          <mat-form-field appearance="outline">
+            <mat-select id="status" formControlName="status">
+              @for (option of statusOptions; track option.value) {
+                <mat-option [value]="option.value">
+                  {{ 'iotForm.status.' + option.value | translate }}
+                </mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </section>
+
+      <section class="form-section">
+        <header class="section-title">
+          <mat-icon>bar_chart</mat-icon>
+          <span>{{ 'iotForm.telemetryCalibration' | translate }}</span>
+        </header>
+
+        <div class="form-row">
+          <label for="soilMoisture">{{ 'cards.iot.soilMoisture' | translate }}</label>
+
+          <mat-form-field appearance="outline">
+            <input
+              id="soilMoisture"
+              matInput
+              type="number"
+              formControlName="soilMoisture"
+              min="0"
+              max="100">
+
+            <span matTextSuffix>%</span>
+
+            @if (hasFieldError('soilMoisture')) {
+              <mat-error>{{ 'iotForm.percentError' | translate }}</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="form-row">
+          <label for="temperature">{{ 'cards.iot.soilTemperature' | translate }}</label>
+
+          <mat-form-field appearance="outline">
+            <input
+              id="temperature"
+              matInput
+              type="number"
+              formControlName="temperature">
+
+            <span matTextSuffix>&deg;C</span>
+
+            @if (hasFieldError('temperature')) {
+              <mat-error>{{ 'iotForm.temperatureError' | translate }}</mat-error>
+            }
+          </mat-form-field>
+        </div>
+
+        <div class="form-row">
+          <label for="leafHumidity">{{ 'iotList.leafHumidity' | translate }}</label>
+
+          <mat-form-field appearance="outline">
+            <input
+              id="leafHumidity"
+              matInput
+              type="number"
+              formControlName="leafHumidity"
+              min="0"
+              max="100">
+
+            <span matTextSuffix>%</span>
+
+            @if (hasFieldError('leafHumidity')) {
+              <mat-error>{{ 'iotForm.percentError' | translate }}</mat-error>
+            }
+          </mat-form-field>
+        </div>
+      </section>
+
+      <footer class="form-actions">
+        <button
+          mat-button
+          type="button"
+          class="cancel-button"
+          (click)="navigateBack()">
+          {{ 'common.cancel' | translate }}
+        </button>
+
+        <button
+          mat-flat-button
+          type="submit"
+          class="submit-button"
+          [disabled]="agronomicStore.loading().saving">
+          <mat-icon>check</mat-icon>
+          {{ 'iotForm.saveDevice' | translate }}
+        </button>
+      </footer>
+    </form>
+  </mat-card>
+
+  @if (agronomicStore.errors().length > 0) {
+    <section class="error-box">
+      <strong>{{ 'common.somethingWrong' | translate }}</strong>
+
+      @for (error of agronomicStore.errors(); track $index) {
+        <p>{{ error }}</p>
+      }
+    </section>
+  }

@@ -1,11 +1,21 @@
+/**
+ * @file overall-plot-health.assembler.ts
+ * @description specialized assembler for mapping Overall Plot Health resources to domain entities.
+ */
 import {
   OverallPlotHealth,
   OverallPlotHealthStatus,
 } from '../domain/model/overall-plot-health.entity';
 
-import { OverallPlotHealthResource } from './resources/overall-plot-health.resource';
+import { BaseAssembler } from '../../shared/infrastructure/base-assembler';
+import { OverallPlotHealthResource } from './overall-plot-health-response';
 
-export class OverallPlotHealthAssembler {
+export class OverallPlotHealthAssembler extends BaseAssembler {
+  /**
+   * Transforms a single resource into an entity.
+   * @param {Object} resource - Raw data point.
+   * @returns {any}
+   */
   static toEntityFromResource(
     resource: OverallPlotHealthResource | null | undefined,
   ): OverallPlotHealth {
@@ -16,8 +26,13 @@ export class OverallPlotHealthAssembler {
     });
   }
 
+  /**
+   * Transforms a collection of resources into entities.
+   * @param {Object[]} resources - Array of raw data points.
+   * @returns {any[]}
+   */
   static toEntitiesFromResources(resources: OverallPlotHealthResource[] = []): OverallPlotHealth[] {
-    return resources.map((resource) => this.toEntityFromResource(resource));
+    return this.toEntities(resources, (resource) => this.toEntityFromResource(resource));
   }
 
   private static toOverallPlotHealthStatus(value: string | undefined): OverallPlotHealthStatus {
@@ -28,7 +43,7 @@ export class OverallPlotHealthAssembler {
       'Critical',
     ];
 
-    return validStatuses.indexOf(value as OverallPlotHealthStatus) !== -1
+    return validStatuses.includes(value as OverallPlotHealthStatus)
       ? (value as OverallPlotHealthStatus)
       : 'Healthy';
   }

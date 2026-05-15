@@ -1,22 +1,43 @@
-/**
- * Abstract base class for API service implementations.
- *
- * @remarks
- * This class serves as the foundation for all infrastructure service layer APIs.
- * In DDD, an infrastructure API offers access to infrastructure services to
- * application layer.
- *
- * Subclasses should extend this class to define infrastructure-specific API operations
- * while leveraging shared infrastructure patterns and error handling strategies.
- *
- * @example
- * ```typescript
- * @Injectable({providedIn: 'root'})
- * export class UserApi extends BaseApi {
- *   // Implementation of user-specific API operations
- * }
- * ```
- */
-export abstract class BaseApi {
+import { inject } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
+import { environment } from '../../../environments/environment';
+
+import { BaseApiEndpoint } from './base-api-endpoint';
+import {
+  CollectionResponse,
+  extractResourceCollection
+} from './base-response';
+
+export type ApiQueryParams = Record<
+  string,
+  string | number | boolean | null | undefined
+>;
+
+export abstract class BaseApi {
+  protected readonly http = inject(HttpClient);
+  protected readonly baseUrl = environment.vioraPlatformApiUrl;
+
+  protected endpoint(path: string): BaseApiEndpoint {
+    return new BaseApiEndpoint(this.baseUrl, path);
+  }
+
+  protected queryParams(params: ApiQueryParams = {}): HttpParams {
+    let httpParams = new HttpParams();
+
+    Object.entries(params).forEach(([key, value]) => {
+      if (value !== null && value !== undefined && value !== '') {
+        httpParams = httpParams.set(key, String(value));
+      }
+    });
+
+    return httpParams;
+  }
+
+  protected collectionFrom<TResource, TKey extends string>(
+    response: CollectionResponse<TResource, TKey>,
+    key: TKey
+  ): TResource[] {
+    return extractResourceCollection(response, key);
+  }
 }

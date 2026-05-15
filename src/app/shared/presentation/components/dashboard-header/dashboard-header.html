@@ -1,0 +1,44 @@
+<header class="dashboard-header">
+  <div>
+    <nav class="dashboard-breadcrumb" aria-label="Page breadcrumb">
+      @for (item of breadcrumbTrail; track item.label; let last = $last) {
+        @if (item.route) {
+          <a
+            class="breadcrumb-item"
+            [class.is-current]="last"
+            [routerLink]="item.route"
+            (click)="onBreadcrumbSelected(item)">
+            {{ item.labelKey ? (item.labelKey | translate) : item.label }}
+          </a>
+        } @else {
+          <button
+            type="button"
+            class="breadcrumb-item"
+            [class.is-current]="last"
+            [disabled]="item.disabled"
+            (click)="onBreadcrumbSelected(item)">
+            {{ item.labelKey ? (item.labelKey | translate) : item.label }}
+          </button>
+        }
+
+        @if (!last) {
+          <span class="breadcrumb-separator">/</span>
+        }
+      }
+    </nav>
+
+    <p>{{ subtitle }}</p>
+  </div>
+
+  <div class="dashboard-actions">
+    <button mat-stroked-button class="updated-button">
+      {{ 'common.updated' | translate }} &middot; {{ updatedLabel }}
+    </button>
+
+    <app-language-switcher />
+
+    <button mat-icon-button class="refresh-button" (click)="onRefresh()">
+      <mat-icon>refresh</mat-icon>
+    </button>
+  </div>
+</header>

@@ -1,11 +1,11 @@
 <mat-card class="kpi-card">
-  <h2>Yield Forecast</h2>
+  <h2>{{ 'cards.yield.title' | translate }}</h2>
 
-  @if (store.yieldForecast(); as forecast) {
+  @if (store.selectedYieldForecast(); as forecast) {
     <strong class="main-value">{{ forecast.tonnesLabel }}</strong>
     <span class="risk-pill">{{ forecast.riskLevel }}</span>
     <p>{{ forecast.description }}</p>
   } @else {
-    <div class="empty-state">Loading yield forecast</div>
+    <div class="empty-state">{{ 'cards.yield.loading' | translate }}</div>
   }
 </mat-card>

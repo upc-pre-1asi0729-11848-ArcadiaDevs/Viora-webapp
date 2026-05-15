@@ -1,4 +1,9 @@
-﻿export type YieldForecastId = number | string | null;
+/**
+ * @file yield-forecast.entity.ts
+ * @description Domain entity representing expected crop yield predictions.
+ */
+
+export type YieldForecastId = number | string | null;
 
 export type YieldForecastPlotId = number | string | null;
 
@@ -19,6 +24,14 @@ export class YieldForecast {
   readonly riskLevel: YieldRiskLevel;
   readonly description: string;
 
+  /**
+   * @param {YieldForecastProperties} params - Entity data.
+   * @param {YieldForecastId} [params.id] - Unique identifier.
+   * @param {YieldForecastPlotId} [params.plotId] - Associated plot ID.
+   * @param {number} [params.tonnes] - Forecasted yield in tonnes.
+   * @param {YieldRiskLevel} [params.riskLevel] - Risk level of the forecast.
+   * @param {string} [params.description] - Description or observation.
+   */
   constructor({
                 id = null,
                 plotId = null,

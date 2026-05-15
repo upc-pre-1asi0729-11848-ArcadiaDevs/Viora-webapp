@@ -1,59 +1,40 @@
+import { Alert } from '../domain/model/alert.entity';
+
 /**
- * @file alert.assembler.ts
- * @description specialized assembler for mapping Alert resources to domain entities.
+ * AlertAssembler class.
+ * Responsable de mapear el JSON puro de la API a entidades de dominio Alert.
  */
-import { Alert, AlertSeverity, AlertStatus } from '../domain/model/alert.entity';
-
-import { BaseAssembler } from '../../shared/infrastructure/base-assembler';
-import { AlertResource } from './alerts-response';
-
-export class AlertAssembler extends BaseAssembler {
+export class AlertAssembler {
   /**
-   * Transforms a single resource into an entity.
-   * @param {Object} resource - Raw data point.
-   * @returns {any}
+   * Mapea el recurso raw a una entidad Alert.
    */
-  static toEntityFromResource(resource: AlertResource | null | undefined): Alert {
-    return new Alert({
-      id: resource?.id ?? null,
-      type: resource?.type ?? '',
-      description: resource?.description ?? '',
-      severity: this.toSeverity(resource?.severity),
-      date: resource?.date ?? '',
-      status: this.toStatus(resource?.status),
-      plot: {
-        name: resource?.plot?.name ?? '',
-        location: resource?.plot?.location ?? '',
-        hectares: resource?.plot?.hectares ?? 0,
+  static toEntityFromResource(resource: any): Alert {
+    return new Alert(
+      resource.id,
+      resource.type,
+      resource.description,
+      resource.severity,
+      resource.date,
+      resource.status,
+      {
+        name: resource.plot?.name || '',
+        location: resource.plot?.location || '',
+        hectares: resource.plot?.hectares || 0,
       },
-    });
+    );
   }
 
   /**
-   * Transforms a collection of resources into entities.
-   * @param {Object[]} resources - Array of raw data points.
-   * @returns {any[]}
+   * Analiza una colección de recursos desde la respuesta HTTP de Angular.
+   * (En Angular ya no usamos el objeto response con status de Axios, recibimos el body directamente).
    */
-  static toEntitiesFromResources(resources: AlertResource[] = []): Alert[] {
-    return this.toEntities(resources, (resource) => this.toEntityFromResource(resource));
-  }
+  static toEntitiesFromResponse(responseBody: any | any[]): Alert[] {
+    if (!responseBody) {
+      console.error('[AlertAssembler] Mapping error: Invalid response body');
+      return [];
+    }
 
-  private static toSeverity(value: string | undefined): AlertSeverity {
-    const validSeverities: AlertSeverity[] = ['Low', 'Medium', 'High', 'Critical'];
-
-    return validSeverities.includes(value as AlertSeverity) ? (value as AlertSeverity) : 'Low';
-  }
-
-  private static toStatus(value: string | undefined): AlertStatus {
-    const validStatuses: AlertStatus[] = [
-      'Pending',
-      'Active',
-      'Suggest',
-      'Under review',
-      'In Progress',
-      'Resolved',
-    ];
-
-    return validStatuses.includes(value as AlertStatus) ? (value as AlertStatus) : 'Pending';
+    const resources = Array.isArray(responseBody) ? responseBody : [responseBody];
+    return resources.map((resource) => this.toEntityFromResource(resource));
   }
 }

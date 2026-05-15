@@ -1,52 +1,54 @@
+/**
+ * @file monitoring-summary.assembler.ts
+ * @description specialized assembler for mapping Monitoring Summary resources to domain entities.
+ */
 import { MonitoringSummary } from '../domain/model/monitoring-summary.entity';
+import { BaseAssembler } from '../../shared/infrastructure/base-assembler';
 
-import { MonitoringSummaryResource } from './resources/monitoring-summary.resource';
+import { MonitoringSummaryResource } from './monitoring-summaries-response';
 
 import { AgronomicRecordAssembler } from './agronomic-record.assembler';
 import { ChillHourRecordAssembler } from './chill-hour-record.assembler';
 import { YieldForecastAssembler } from './yield-forecast.assembler';
-import { OverallPlotHealthAssembler } from './overall-plot-health.assembler';
+import { OverallPlotHealthAssembler } from './overall-plot-health-assembler';
 
-export class MonitoringSummaryAssembler {
+export class MonitoringSummaryAssembler extends BaseAssembler {
+  /**
+   * Transforms a single resource into an entity.
+   * @param {Object} resource - Raw data point.
+   * @returns {any}
+   */
   static toEntityFromResource(
     resource: MonitoringSummaryResource | null | undefined,
   ): MonitoringSummary {
-    const latestNdvi = resource?.ndvi
-      ? AgronomicRecordAssembler.toEntityFromResource(resource.ndvi)
-      : null;
-
-    const chillHourRecord = resource?.chillAccumulation
-      ? ChillHourRecordAssembler.toEntityFromResource(resource.chillAccumulation)
-      : null;
-
-    const yieldForecast = resource?.yieldForecast
-      ? YieldForecastAssembler.toEntityFromResource(resource.yieldForecast)
-      : null;
-
-    const overallPlotHealth = resource?.overallHealth
-      ? OverallPlotHealthAssembler.toEntityFromResource(resource.overallHealth)
-      : null;
-
     return new MonitoringSummary({
       id: resource?.id ?? null,
       period: resource?.period ?? 'current',
-      ndvi: latestNdvi,
-      chillAccumulation: chillHourRecord,
-      yieldForecast,
-      overallHealth: overallPlotHealth,
-      updatedAt: resource?.updatedAt ?? new Date().toISOString(),
+      latestNdvi: AgronomicRecordAssembler.toEntityFromResource(resource?.ndvi),
+      chillHourRecord: ChillHourRecordAssembler.toEntityFromResource(resource?.chillAccumulation),
+      yieldForecast: YieldForecastAssembler.toEntityFromResource(resource?.yieldForecast),
+      overallPlotHealth: OverallPlotHealthAssembler.toEntityFromResource(resource?.overallHealth),
+      updatedAt: resource?.updatedAt ?? '',
     });
   }
 
+  /**
+   * Transforms a collection of resources into entities.
+   * @param {Object[]} resources - Array of raw data points.
+   * @returns {any[]}
+   */
   static toEntitiesFromResources(resources: MonitoringSummaryResource[] = []): MonitoringSummary[] {
-    return resources.map((resource) => this.toEntityFromResource(resource));
+    return this.toEntities(resources, (resource) => this.toEntityFromResource(resource));
   }
 
+  /**
+   * Transforms the first resource of a collection into an entity.
+   * @param {Object[]} resources - Array of raw data points.
+   * @returns {any | null}
+   */
   static toFirstEntityFromResources(
     resources: MonitoringSummaryResource[] = [],
   ): MonitoringSummary | null {
-    const firstResource = resources.at(0);
-
-    return firstResource ? this.toEntityFromResource(firstResource) : null;
+    return this.toFirstEntity(resources, (resource) => this.toEntityFromResource(resource));
   }
 }

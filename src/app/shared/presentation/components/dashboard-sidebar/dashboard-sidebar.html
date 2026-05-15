@@ -1,0 +1,88 @@
+<aside class="dashboard-sidebar" [class.is-collapsed]="collapsed()">
+  <button
+    type="button"
+    class="collapse-button"
+    (click)="toggleSidebar()"
+    [attr.aria-label]="collapsed() ? ('sidebar.expand' | translate) : ('sidebar.collapse' | translate)">
+    <span>{{ collapsed() ? '›' : '‹' }}</span>
+  </button>
+
+  <header class="sidebar-brand">
+    <img src="/assets/icons/dashboard/viora-isotipo-green.png" alt="Viora" class="brand-logo">
+
+    @if (!collapsed()) {
+      <strong>{{ 'sidebar.brand' | translate }}</strong>
+    }
+  </header>
+
+  <nav class="sidebar-nav" [attr.aria-label]="'sidebar.navigation' | translate">
+    <section class="nav-group">
+      @for (item of mainItems; track item.labelKey) {
+        <a
+          class="nav-item"
+          [routerLink]="item.route"
+          routerLinkActive="is-active"
+          [routerLinkActiveOptions]="{ exact: item.exact ?? false }"
+          [attr.aria-label]="item.labelKey | translate">
+
+          @if (item.icon) {
+            <mat-icon class="nav-icon nav-material-icon">{{ item.icon }}</mat-icon>
+          } @else if (item.iconPath) {
+            <span
+              class="nav-icon nav-mask-icon"
+              [style.--icon-url]="getIconMask(item.iconPath)">
+            </span>
+          }
+
+          @if (!collapsed()) {
+            <span class="nav-label">{{ item.labelKey | translate }}</span>
+          }
+        </a>
+      }
+    </section>
+
+    <section class="nav-group secondary">
+      @for (item of secondaryItems; track item.labelKey) {
+        <a
+          class="nav-item"
+          [routerLink]="item.route"
+          routerLinkActive="is-active"
+          [routerLinkActiveOptions]="{ exact: false }"
+          [attr.aria-label]="item.labelKey | translate">
+
+          @if (item.icon) {
+            <mat-icon class="nav-icon nav-material-icon">{{ item.icon }}</mat-icon>
+          } @else if (item.iconPath) {
+            <span
+              class="nav-icon nav-mask-icon"
+              [style.--icon-url]="getIconMask(item.iconPath)">
+            </span>
+          }
+
+          @if (!collapsed()) {
+            <span class="nav-label">{{ item.labelKey | translate }}</span>
+          }
+        </a>
+      }
+    </section>
+  </nav>
+
+
+  <footer class="sidebar-user">
+    <img
+      class="user-avatar"
+      src="/assets/images/dashboard/user-avatar.png"
+      alt="User avatar">
+
+    @if (!collapsed()) {
+      <div class="user-info">
+        <span>{{ 'sidebar.welcomeBack' | translate }} 👋</span>
+        <strong>DaronCameloft</strong>
+      </div>
+
+      <a class="user-action" routerLink="/profile" [attr.aria-label]="'sidebar.openProfile' | translate">
+        ›
+      </a>
+    }
+  </footer>
+</aside>
