@@ -42,6 +42,12 @@ export class AgronomicStore {
 
   readonly iotDeviceSummary = signal<IotDeviceSummary | null>(null);
 
+  /**
+   * Selected plot identifier for map.
+   * @type {import('@angular/core').WritableSignal<number | string | null>}
+   */
+  readonly selectedMapPlotId = signal<number | string | null>(null);
+
   readonly loading = signal<AgronomicLoadingState>({
     iotDevices: false,
     plots: false,
@@ -372,5 +378,15 @@ export class AgronomicStore {
 
   private registerError(error: unknown): void {
     this.errors.update((errors) => [...errors, error]);
+  }
+
+  /**
+   * Updates the selected map plot identifier.
+   * @param {number|string|null} id - Plot identifier.
+   */
+  selectMapPlot(id: number | string | null): void {
+    this.selectedMapPlotId.set(id);
+    this.mapAgronomicRecords.set([]);
+    this.fetchMapRecords(id);
   }
 }
