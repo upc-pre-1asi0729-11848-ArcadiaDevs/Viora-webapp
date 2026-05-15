@@ -45,16 +45,16 @@ export class AgronomicRecord {
    * @param {number} [params.yieldValue] - Yield value.
    */
   constructor({
-    id = null,
-    plotId = null,
-    date = '',
-    ndviIndex = 0,
-    ndviTrend = 'stable',
-    ndviStatusLabel = '',
-    temp = 0,
-    cp = 0,
-    yieldValue = 0,
-  }: AgronomicRecordProperties = {}) {
+                id = null,
+                plotId = null,
+                date = '',
+                ndviIndex = 0,
+                ndviTrend = 'stable',
+                ndviStatusLabel = '',
+                temp = 0,
+                cp = 0,
+                yieldValue = 0
+              }: AgronomicRecordProperties = {}) {
     this.id = id;
     this.plotId = plotId;
     this.date = date;
