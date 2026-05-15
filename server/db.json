@@ -1,0 +1,341 @@
+{
+  "plots": [
+    {
+      "id": 1,
+      "name": "Santa Rosa",
+      "polygonCoordinates": [
+        [
+          -3.785,
+          37.842
+        ],
+        [
+          -3.781,
+          37.842
+        ],
+        [
+          -3.781,
+          37.845
+        ],
+        [
+          -3.785,
+          37.845
+        ],
+        [
+          -3.785,
+          37.842
+        ]
+      ],
+      "areaSize": 12.5,
+      "lastUpdate": "2026-05-04T21:00:00Z",
+      "healthStatus": "Healthy",
+      "phenologicalRisk": "Low",
+      "currentImagery": {
+        "tileUrl": "https://api.agromonitoring.com/tile/1.0/{z}/{x}/{y}/1206594a380/69fe6599ca962770013c275a?appid=84a0344edca251f7366b099821006c05",
+        "captureDate": "2026-05-01",
+        "ndviMean": 0.62,
+        "cloudPercentage": 2.5
+      }
+    },
+    {
+      "id": 2,
+      "name": "El Olivar",
+      "polygonCoordinates": [
+        [
+          -4.778,
+          37.885
+        ],
+        [
+          -4.774,
+          37.885
+        ],
+        [
+          -4.774,
+          37.888
+        ],
+        [
+          -4.778,
+          37.888
+        ],
+        [
+          -4.778,
+          37.885
+        ]
+      ],
+      "areaSize": 8.2,
+      "lastUpdate": "2026-05-08T20:30:00Z",
+      "healthStatus": "Under Review",
+      "phenologicalRisk": "Medium",
+      "currentImagery": {
+        "tileUrl": "https://api.agromonitoring.com/tile/1.0/{z}/{x}/{y}/12065920080/69fe65be646c6502129fd662?appid=84a0344edca251f7366b099821006c05",
+        "captureDate": "2026-05-02",
+        "ndviMean": 0.45,
+        "cloudPercentage": 15
+      }
+    }
+  ],
+  "agronomic-records": [
+    {
+      "id": 1,
+      "plotId": 1,
+      "date": "2026-05-01T10:00:00Z",
+      "ndviIndex": 0.62,
+      "ndviTrend": "up",
+      "ndviStatusLabel": "Stable vegetation vigor",
+      "temp": 18.5,
+      "cp": 590
+    },
+    {
+      "id": 2,
+      "plotId": 1,
+      "date": "2026-05-04T15:30:00Z",
+      "ndviIndex": 0.68,
+      "ndviTrend": "up",
+      "ndviStatusLabel": "Growing vigor",
+      "temp": 22,
+      "cp": 602
+    },
+    {
+      "id": 3,
+      "plotId": 2,
+      "date": "2026-05-04T15:30:00Z",
+      "ndviIndex": 0.45,
+      "ndviTrend": "down",
+      "ndviStatusLabel": "Requires attention",
+      "temp": 21,
+      "cp": 450
+    }
+  ],
+  "monitoring-summaries": [
+    {
+      "id": 1,
+      "period": "current",
+      "updatedAt": "2026-05-04T21:00:00Z",
+      "ndvi": {
+        "ndviIndex": 0.55,
+        "ndviTrend": "down",
+        "ndviStatusLabel": "Stable"
+      },
+      "chillAccumulation": {
+        "accumulatedChillPortions": 72,
+        "weeklyDiff": 6,
+        "threshold": 600
+      },
+      "yieldForecast": {
+        "tonnes": 12.4,
+        "riskLevel": "Medium",
+        "description": "Risk of alternate bearing"
+      },
+      "overallHealth": {
+        "status": "Healthy",
+        "healthyPlotsCount": 2,
+        "reviewPlotsCount": 1
+      }
+    }
+  ],
+  "weather-summaries": [
+    {
+      "id": 1,
+      "city": "Tacna",
+      "currentTemp": 22,
+      "condition": "Partly cloudy",
+      "lastUpdate": "2:34 pm",
+      "temperatureAnomaly": 1.5,
+      "climateRisk": "Medium",
+      "forecastTemp": 19
+    }
+  ],
+  "yield-forecasts": [
+    {
+      "id": 1,
+      "plotId": 1,
+      "tonnes": 12.4,
+      "riskLevel": "Medium",
+      "description": "High probability of alternate bearing this season."
+    }
+  ],
+  "agronomic-statistics": [
+    {
+      "id": "all-30days",
+      "plotId": "all",
+      "timeRange": "30days",
+      "labels": [
+        "01 May",
+        "05 May",
+        "10 May",
+        "15 May",
+        "20 May",
+        "25 May",
+        "30 May"
+      ],
+      "ndviSeries": [
+        0.55,
+        0.58,
+        0.62,
+        0.65,
+        0.61,
+        0.59,
+        0.63
+      ],
+      "cpSeries": [
+        450,
+        480,
+        510,
+        545,
+        580,
+        605,
+        620
+      ],
+      "threshold": 600,
+      "observation": "Slight recovery after the last low-vigor event",
+      "description": "Vegetation vigor remained stable during the last 30 days, with a slight improvement after the last update.",
+      "trend": "Stable",
+      "statusLabel": "Stable"
+    },
+    {
+      "id": "plot1-30days",
+      "plotId": "1",
+      "timeRange": "30days",
+      "labels": [
+        "01 May",
+        "05 May",
+        "10 May",
+        "15 May",
+        "20 May",
+        "25 May",
+        "30 May"
+      ],
+      "ndviSeries": [
+        0.62,
+        0.64,
+        0.68,
+        0.7,
+        0.68,
+        0.67,
+        0.69
+      ],
+      "cpSeries": [
+        500,
+        520,
+        550,
+        580,
+        602,
+        615,
+        630
+      ],
+      "threshold": 600,
+      "observation": "Sustained growth above the critical threshold.",
+      "description": "The 'Santa Rosa' plot shows optimal development with increasing vigor indices.",
+      "trend": "Up",
+      "statusLabel": "Healthy"
+    },
+    {
+      "id": "plot2-30days",
+      "plotId": "2",
+      "timeRange": "30days",
+      "labels": [
+        "01 May",
+        "05 May",
+        "10 May",
+        "15 May",
+        "20 May",
+        "25 May",
+        "30 May"
+      ],
+      "ndviSeries": [
+        0.42,
+        0.45,
+        0.44,
+        0.46,
+        0.45,
+        0.44,
+        0.45
+      ],
+      "cpSeries": [
+        400,
+        415,
+        430,
+        445,
+        460,
+        475,
+        490
+      ],
+      "threshold": 600,
+      "observation": "Water stress detected, requires immediate review.",
+      "description": "The 'El Olivar' plot shows signs of moderate stress that impact the NDVI.",
+      "trend": "Down",
+      "statusLabel": "Review"
+    }
+  ],
+  "alerts": [
+    {
+      "id": 1,
+      "type": "Pest symptom report",
+      "description": "Presence of cochinilla on leaves in northern sector of the plot",
+      "severity": "Critical",
+      "date": "2026-05-11T10:30:00Z",
+      "status": "Active",
+      "plot": {
+        "name": "Santa Rosa",
+        "location": "La Yarada - Los Palos",
+        "hectares": 12.5
+      }
+    },
+    {
+      "id": 2,
+      "type": "Low NDVI zone",
+      "description": "Detected anomalous drop in vegetation vigor near the well area",
+      "severity": "High",
+      "date": "2026-05-10T14:20:00Z",
+      "status": "Under review",
+      "plot": {
+        "name": "El Olivar",
+        "location": "Sama Inclán",
+        "hectares": 8.2
+      }
+    },
+    {
+      "id": 3,
+      "type": "Phenological risk",
+      "description": "High risk of flowering failure due to sudden temperature variance",
+      "severity": "Medium",
+      "date": "2026-05-11T02:00:00Z",
+      "status": "Suggest",
+      "plot": {
+        "name": "Santa Rosa",
+        "location": "La Yarada - Los Palos",
+        "hectares": 12.5
+      }
+    }
+  ],
+  "iot-devices": [
+    {
+      "id": 1,
+      "name": "Soil Sensor Alpha-1",
+      "plotId": 1,
+      "soilMoisture": 46,
+      "temperature": 24,
+      "leafHumidity": 62,
+      "status": "active",
+      "lastUpdate": "2026-05-12T13:54:59.729Z"
+    },
+    {
+      "id": 2,
+      "name": "Soil Sensor Beta-2",
+      "soilMoisture": 12,
+      "temperature": 28,
+      "leafHumidity": 45,
+      "status": "warning",
+      "lastUpdate": "2026-05-11T12:30:00Z"
+    },
+    {
+      "id": 3,
+      "name": "Leaf Sensor Gamma-3",
+      "plotId": 2,
+      "soilMoisture": 42,
+      "temperature": 22,
+      "leafHumidity": 70,
+      "status": "active",
+      "lastUpdate": "2026-05-11T11:45:00Z"
+    }
+  ]
+}
