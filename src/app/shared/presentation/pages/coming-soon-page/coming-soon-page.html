@@ -1,0 +1,25 @@
+<app-dashboard-header
+  [title]="title()"
+  [subtitle]="subtitle()"
+  [breadcrumbs]="breadcrumbs()"
+  updatedLabel="In progress">
+</app-dashboard-header>
+
+<section class="coming-soon-page">
+  <div class="status-icon">
+    <mat-icon>construction</mat-icon>
+  </div>
+
+  <div class="message">
+    <span>{{ sectionLabel() }}</span>
+    <h1>{{ 'comingSoon.title' | translate }}</h1>
+    <p>
+      {{ 'comingSoon.message' | translate }}
+    </p>
+  </div>
+
+  <a mat-stroked-button routerLink="/producer/dashboard">
+    <mat-icon>arrow_back</mat-icon>
+    {{ 'common.backToDashboard' | translate }}
+  </a>
+</section>
