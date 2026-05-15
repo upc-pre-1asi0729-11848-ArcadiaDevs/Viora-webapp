@@ -1,0 +1,179 @@
+{
+  "common": {
+    "updated": "Actualizado",
+    "loading": "Cargando",
+    "risk": "Riesgo",
+    "backToDashboard": "Volver al dashboard",
+    "cancel": "Cancelar",
+    "somethingWrong": "Algo salió mal"
+  },
+  "risk": {
+    "Low": "Bajo",
+    "Medium": "Medio",
+    "High": "Alto"
+  },
+  "breadcrumbs": {
+    "dashboard": "Dashboard",
+    "overview": "Resumen"
+  },
+  "time": {
+    "current": "Actual",
+    "campaign": "Campaña",
+    "7days": "7 días",
+    "30days": "30 días"
+  },
+  "sidebar": {
+    "brand": "Viora Dashboard",
+    "navigation": "Navegación del dashboard",
+    "expand": "Expandir sidebar",
+    "collapse": "Colapsar sidebar",
+    "dashboard": "Dashboard",
+    "myPlots": "Mis parcelas",
+    "iotDevices": "Dispositivos IoT",
+    "alerts": "Alertas",
+    "dynamicNutrition": "Nutrición dinámica",
+    "pestSurveillance": "Vigilancia de plagas",
+    "expertAssistance": "Asistencia experta",
+    "expenseHistory": "Historial de gastos",
+    "settings": "Configuración",
+    "subscription": "Suscripción",
+    "support": "Soporte",
+    "welcomeBack": "Bienvenido de nuevo",
+    "openProfile": "Abrir perfil"
+  },
+  "toolbar": {
+    "dashboard": "Dashboard",
+    "iotDevices": "Dispositivos IoT",
+    "plotOverview": "Vista de parcela",
+    "weather": "Clima",
+    "selectScope": "Seleccionar alcance de parcelas"
+  },
+  "dashboard": {
+    "scope": {
+      "allPlots": "Todas las parcelas"
+    },
+    "addIotDevice": "Agregar dispositivo IoT"
+  },
+  "cards": {
+    "overallHealth": {
+      "title": "Salud general de parcelas",
+      "status": "Estado",
+      "waiting": "Esperando resumen de la finca"
+    },
+    "ndvi": {
+      "title": "Estado NDVI",
+      "loading": "Cargando registros NDVI"
+    },
+    "chill": {
+      "title": "Acumulación de frío",
+      "loading": "Cargando acumulación de frío"
+    },
+    "yield": {
+      "title": "Pronóstico de rendimiento",
+      "loading": "Cargando pronóstico de rendimiento"
+    },
+    "iot": {
+      "title": "Dispositivos IoT",
+      "devicesOnline": "{{count}} dispositivos en línea",
+      "sensorsOnline": "{{count}} sensores en línea",
+      "plotsWithIot": "{{count}} parcelas con IoT",
+      "selectedPlotScope": "Alcance IoT de {{plot}}",
+      "selectedScope": "Alcance IoT de la parcela seleccionada",
+      "loading": "Cargando dispositivos IoT",
+      "waterStress": "Estrés hídrico",
+      "soilMoisture": "Humedad del suelo",
+      "soilTemperature": "Temperatura del suelo",
+      "moistureHigh": "Requiere atención de riego.",
+      "moistureMedium": "Monitorear tendencia de humedad del suelo.",
+      "moistureLow": "Las condiciones de humedad están estables.",
+      "temperatureHigh": "La temperatura puede aumentar el estrés hídrico.",
+      "temperatureMedium": "Vigilar exposición a temperatura.",
+      "temperatureLow": "La temperatura está dentro del rango esperado."
+    }
+  },
+  "plotOverview": {
+    "title": "Vista de parcela",
+    "openSelectedPlot": "Abrir parcela seleccionada",
+    "selectPlot": "Seleccionar parcela",
+    "healthStatus": "Estado de salud",
+    "phenologicalRisk": "Riesgo fenológico",
+    "lastUpdate": "Última actualización registrada",
+    "recommendedAction": "Acción recomendada",
+    "loading": "Cargando vista de parcela...",
+    "recommendations": {
+      "waiting": "Esperando datos de la parcela",
+      "inspect": "Priorizar inspección de campo y plan de mitigación",
+      "nutrition": "Revisar plan de nutrición",
+      "monitoring": "Continuar monitoreo regular"
+    }
+  },
+  "weather": {
+    "title": "Resumen del clima",
+    "details": "Detalles del clima",
+    "forecast3Days": "Pronóstico de 3 días",
+    "temperatureAnomaly": "Anomalía de temperatura",
+    "climateRisk": "Riesgo climático",
+    "loading": "Cargando resumen del clima"
+  },
+  "trend": {
+    "title": "Análisis de tendencia / NDVI",
+    "subtitle": "Índice de vigor vegetal vs. porciones de frío acumuladas",
+    "selectPlot": "Seleccionar parcela para análisis de tendencia",
+    "selectTimeRange": "Seleccionar rango de tiempo para análisis",
+    "currentValue": "Valor actual",
+    "observation": "Observación",
+    "loading": "Cargando análisis de tendencia"
+  },
+  "alerts": {
+    "title": "Alertas recientes",
+    "search": "Buscar",
+    "type": "Tipo de alerta",
+    "plot": "Parcela",
+    "severity": "Severidad",
+    "date": "Fecha",
+    "status": "Estado",
+    "loading": "Cargando alertas recientes"
+  },
+  "recommended": {
+    "title": "Acciones recomendadas",
+    "nutrition": "Revisar plan de nutrición",
+    "expert": "Solicitar asistencia experta",
+    "inspect": "Inspeccionar zona de bajo vigor",
+    "symptoms": "Reportar nuevos síntomas"
+  },
+  "comingSoon": {
+    "title": "Estamos trabajando en esto",
+    "message": "Esta sección aún no está disponible. Puedes seguir monitoreando tu dashboard de productor mientras la terminamos."
+  },
+  "iotList": {
+    "subtitle": "Administra dispositivos conectados en campo y lecturas de telemetría.",
+    "liveData": "Datos en vivo",
+    "name": "Nombre",
+    "leafHumidity": "Humedad de hoja",
+    "actions": "Acciones",
+    "empty": "Aún no hay dispositivos IoT registrados."
+  },
+  "iotForm": {
+    "newSubtitle": "Registra un dispositivo IoT externo conectado a una parcela monitoreada.",
+    "editSubtitle": "Actualiza la configuración de telemetría y el estado de monitoreo del dispositivo.",
+    "formMode": "Modo formulario",
+    "backToIot": "Volver a dispositivos IoT",
+    "generalInfo": "Información general",
+    "deviceName": "Nombre del dispositivo",
+    "devicePlaceholder": "Sensor Alpha-1",
+    "deviceNameRequired": "El nombre del dispositivo es obligatorio.",
+    "plotRequired": "La parcela es obligatoria.",
+    "telemetryCalibration": "Calibración de telemetría",
+    "percentError": "Ingresa un valor de 0 a 100.",
+    "temperatureError": "Ingresa una temperatura válida.",
+    "saveDevice": "Guardar dispositivo",
+    "newDevice": "Nuevo dispositivo",
+    "editDevice": "Editar dispositivo",
+    "status": {
+      "active": "Activo",
+      "warning": "Advertencia",
+      "critical": "Crítico",
+      "inactive": "Inactivo"
+    }
+  }
+}
