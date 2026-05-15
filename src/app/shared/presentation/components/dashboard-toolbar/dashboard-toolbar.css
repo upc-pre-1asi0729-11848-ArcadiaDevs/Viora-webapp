@@ -1,0 +1,109 @@
+.dashboard-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  margin-bottom: 28px;
+  background: #ffffff;
+  border-radius: 16px;
+}
+
+.view-buttons,
+.filter-buttons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.filter-buttons {
+  margin-left: auto;
+}
+
+.view-buttons button,
+.view-buttons a,
+.filter-buttons button {
+  border-radius: 8px;
+  color: #333333;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.view-buttons button[mat-stroked-button],
+.view-buttons a[mat-stroked-button],
+.filter-buttons button[mat-stroked-button] {
+  border-color: #e8e4df;
+}
+
+.view-buttons button.is-active,
+.view-buttons a.is-active,
+.filter-buttons button.is-active {
+  background-color: #2e4a3a !important;
+  color: #ffffff !important;
+}
+
+.view-buttons a.is-disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.toolbar-icon,
+.view-buttons mat-icon {
+  margin-right: 6px;
+  vertical-align: text-bottom;
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+}
+
+.toolbar-icon {
+  display: inline-block;
+  background: currentColor;
+  mask: var(--icon-url) center / contain no-repeat;
+  -webkit-mask: var(--icon-url) center / contain no-repeat;
+}
+
+.scope-select {
+  width: 180px;
+  min-height: 36px;
+  box-sizing: border-box;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #2e4a3a;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #2e4a3a;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.scope-select ::ng-deep .mat-mdc-select-value,
+.scope-select ::ng-deep .mat-mdc-select-arrow {
+  color: #2e4a3a;
+}
+
+.scope-badge {
+  margin-left: 8px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #f8f4ed;
+  color: #4f4f4f;
+  font-size: 11px;
+}
+
+@media (max-width: 1100px) {
+  .dashboard-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .view-buttons,
+  .filter-buttons {
+    flex-wrap: wrap;
+  }
+
+  .filter-buttons {
+    margin-left: 0;
+  }
+}
