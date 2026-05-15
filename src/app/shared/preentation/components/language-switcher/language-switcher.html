@@ -1,9 +1,0 @@
-<p-selectButton
-  [options]="availableLocales"
-  [ngModel]="locale"
-  (ngModelChange)="useLanguage($event)"
->
-  <ng-template let-option pTemplate="item">
-    <span>{{ option.toUpperCase() }}</span>
-  </ng-template>
-</p-selectButton>
