@@ -20,22 +20,22 @@ export class RecommendedActionsCard {
     {
       labelKey: 'recommended.nutrition',
       iconPath: '/assets/icons/dashboard/leaf-outline.svg',
-      route: '/dynamic-nutrition',
+      route: '/agronomic/dynamic-nutrition',
     },
     {
       labelKey: 'recommended.expert',
       iconPath: '/assets/icons/dashboard/people-outline.svg',
-      route: '/expert-assistance',
+      route: '/assistance/expert-assistance',
     },
     {
       labelKey: 'recommended.inspect',
       iconPath: '/assets/icons/dashboard/information-circle-outline.svg',
-      route: '/plots',
+      route: '/agronomic/plots',
     },
     {
       labelKey: 'recommended.symptoms',
       iconPath: '/assets/icons/dashboard/megaphone-outline.svg',
-      route: '/pest-surveillance',
+      route: '/surveillance/pest-surveillance',
     },
   ];
 }

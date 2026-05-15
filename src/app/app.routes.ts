@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
 
-const producerRoutes = () =>
-  import('./shared/presentation/producer.routes').then((m) => m.producerRoutes);
-const comingSoonPage = () =>
-  import('./shared/presentation/pages/coming-soon-page/coming-soon-page').then(
-    (m) => m.ComingSoonPage,
-  );
+const workspaceRoutes = () =>
+  import('./shared/presentation/workspace.routes').then((m) => m.workspaceRoutes);
+const agronomicRoutes = () =>
+  import('./agronomic/presentation/agronomic.routes').then((m) => m.agronomicRoutes);
+const surveillanceRoutes = () =>
+  import('./surveillance/presentation/surveillance.routes').then((m) => m.surveillanceRoutes);
 const layout = () => import('./shared/presentation/components/layout/layout').then((m) => m.Layout);
 
 /**
@@ -14,87 +14,96 @@ const layout = () => import('./shared/presentation/components/layout/layout').th
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'producer/dashboard',
+    redirectTo: 'dashboard',
     pathMatch: 'full',
   },
   {
-    path: 'producer',
+    path: 'agronomic',
     loadComponent: layout,
     children: [
       {
         path: '',
-        loadChildren: producerRoutes,
+        loadChildren: agronomicRoutes,
       },
     ],
   },
   {
-    path: 'dashboard',
-    redirectTo: 'producer/dashboard',
-    pathMatch: 'full',
-  },
-  {
-    path: 'plots',
-    redirectTo: 'producer/plot',
-    pathMatch: 'full',
-  },
-  {
-    path: 'alerts',
-    redirectTo: 'producer/alerts',
-    pathMatch: 'full',
-  },
-  {
-    path: 'dynamic-nutrition',
-    redirectTo: 'producer/dynamic-nutrition',
-    pathMatch: 'full',
-  },
-  {
-    path: 'pest-surveillance',
-    redirectTo: 'producer/pest-surveillance',
-    pathMatch: 'full',
-  },
-  {
-    path: 'expert-assistance',
-    redirectTo: 'producer/expert-assistance',
-    pathMatch: 'full',
-  },
-  {
-    path: 'expense-history',
-    redirectTo: 'producer/expense-history',
-    pathMatch: 'full',
-  },
-  {
-    path: 'settings',
-    redirectTo: 'producer/settings',
-    pathMatch: 'full',
-  },
-  {
-    path: 'subscription',
-    redirectTo: 'producer/subscription',
-    pathMatch: 'full',
-  },
-  {
-    path: 'support',
-    redirectTo: 'producer/support',
-    pathMatch: 'full',
-  },
-  {
-    path: 'profile',
+    path: 'surveillance',
     loadComponent: layout,
     children: [
       {
         path: '',
-        title: 'Profile',
-        loadComponent: comingSoonPage,
-        data: {
-          pageTitle: 'Profile',
-          sectionLabel: 'Profile',
-          subtitle: 'Manage producer account details and preferences.',
-        },
+        loadChildren: surveillanceRoutes,
+      },
+    ],
+  },
+  {
+    path: 'plots',
+    redirectTo: 'agronomic/plots',
+    pathMatch: 'full',
+  },
+  {
+    path: 'plots/details',
+    redirectTo: 'agronomic/plots',
+    pathMatch: 'full',
+  },
+  {
+    path: 'alerts',
+    redirectTo: 'surveillance/alerts',
+    pathMatch: 'full',
+  },
+  {
+    path: 'dynamic-nutrition',
+    redirectTo: 'agronomic/dynamic-nutrition',
+    pathMatch: 'full',
+  },
+  {
+    path: 'dynamic-nutrition/plan',
+    redirectTo: 'agronomic/dynamic-nutrition/plan',
+    pathMatch: 'full',
+  },
+  {
+    path: 'pest-surveillance',
+    redirectTo: 'surveillance/pest-surveillance',
+    pathMatch: 'full',
+  },
+  {
+    path: 'pest-surveillance/report-symptoms',
+    redirectTo: 'surveillance/pest-surveillance/report-symptoms',
+    pathMatch: 'full',
+  },
+  {
+    path: 'expert-assistance',
+    redirectTo: 'assistance/expert-assistance',
+    pathMatch: 'full',
+  },
+  {
+    path: 'expert-assistance/request',
+    redirectTo: 'assistance/expert-assistance/request',
+    pathMatch: 'full',
+  },
+  {
+    path: 'expense-history',
+    redirectTo: 'billing/expense-history',
+    pathMatch: 'full',
+  },
+  {
+    path: 'subscription',
+    redirectTo: 'billing/subscription',
+    pathMatch: 'full',
+  },
+  {
+    path: '',
+    loadComponent: layout,
+    children: [
+      {
+        path: '',
+        loadChildren: workspaceRoutes,
       },
     ],
   },
   {
     path: '**',
-    redirectTo: 'producer/dashboard',
+    redirectTo: 'dashboard',
   },
 ];

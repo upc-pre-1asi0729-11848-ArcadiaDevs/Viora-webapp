@@ -20,7 +20,7 @@ import {
 } from './plots-response';
 import {
   AgronomicRecordCollectionResponse
-} from './agronomic-records-response';
+} from './agronomic-record-response';
 import {
   MonitoringSummaryCollectionResponse
 } from './monitoring-summaries-response';
