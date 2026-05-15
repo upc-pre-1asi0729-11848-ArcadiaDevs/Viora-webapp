@@ -1,3 +1,8 @@
+/**
+ * @file agronomic-record.entity.ts
+ * @description Domain entity representing a point-in-time agronomic measurement.
+ */
+
 export type NdviTrend = 'up' | 'down' | 'stable';
 
 export type AgronomicRecordId = number | string | null;
@@ -27,6 +32,18 @@ export class AgronomicRecord {
   readonly cp: number;
   readonly yieldValue: number;
 
+  /**
+   * @param {AgronomicRecordProperties} params - Entity data.
+   * @param {AgronomicRecordId} [params.id] - Unique identifier.
+   * @param {AgronomicRecordPlotId} [params.plotId] - Associated plot ID.
+   * @param {string} [params.date] - Date of the record.
+   * @param {number} [params.ndviIndex] - NDVI value.
+   * @param {NdviTrend} [params.ndviTrend] - NDVI trend.
+   * @param {string} [params.ndviStatusLabel] - Status label for NDVI.
+   * @param {number} [params.temp] - Temperature value.
+   * @param {number} [params.cp] - Accumulated chill portions.
+   * @param {number} [params.yieldValue] - Yield value.
+   */
   constructor({
     id = null,
     plotId = null,
