@@ -32,7 +32,7 @@
         [-4.778, 37.885]
       ],
       "areaSize": 8.2,
-      "lastUpdate": "2026-05-08T20:30:00Z",
+      "lastUpdate": "2026-05-04T20:30:00Z",
       "healthStatus": "Under Review",
       "phenologicalRisk": "Medium",
       "currentImagery": {
@@ -142,9 +142,113 @@
       "tonnes": 12.4,
       "riskLevel": "Medium",
       "description": "High probability of alternate bearing this season."
+    },
+    {
+      "id": 2,
+      "plotId": 2,
+      "tonnes": 8.6,
+      "riskLevel": "Medium",
+      "description": "Moderate alternate bearing risk due to NDVI decrease."
+    }
+  ],
+  "iot-device-summaries": [
+    {
+      "id": 1,
+      "totalOnlineDevices": 5,
+      "plotsWithIot": 2,
+      "lastSync": "2026-05-09T13:20:00Z",
+      "sensorCards": [
+        {
+          "id": 1,
+          "plotId": 1,
+          "title": "Water Stress",
+          "sourceLabel": "IoT",
+          "metricLabel": "Soil moisture",
+          "metricValue": 28,
+          "metricUnit": "%",
+          "trend": "up",
+          "riskLevel": "Medium",
+          "recommendation": "Preventive irrigation suggested"
+        },
+        {
+          "id": 2,
+          "plotId": 1,
+          "title": "Water Stress",
+          "sourceLabel": "IoT",
+          "metricLabel": "Soil temperature",
+          "metricValue": 24,
+          "metricUnit": "°",
+          "trend": "up",
+          "riskLevel": "Medium",
+          "recommendation": "Preventive irrigation suggested"
+        },
+        {
+          "id": 3,
+          "plotId": 2,
+          "title": "Water Stress",
+          "sourceLabel": "IoT",
+          "metricLabel": "Soil moisture",
+          "metricValue": 31,
+          "metricUnit": "%",
+          "trend": "stable",
+          "riskLevel": "Low",
+          "recommendation": "Maintain regular monitoring"
+        },
+        {
+          "id": 4,
+          "plotId": 2,
+          "title": "Water Stress",
+          "sourceLabel": "IoT",
+          "metricLabel": "Soil temperature",
+          "metricValue": 23,
+          "metricUnit": "°",
+          "trend": "stable",
+          "riskLevel": "Low",
+          "recommendation": "Maintain regular monitoring"
+        }
+      ]
     }
   ],
   "agronomic-statistics": [
+    {
+      "id": "all-7days",
+      "plotId": "all",
+      "timeRange": "7days",
+      "labels": ["24 May", "25 May", "26 May", "27 May", "28 May", "29 May", "30 May"],
+      "ndviSeries": [0.6, 0.61, 0.6, 0.59, 0.61, 0.62, 0.63],
+      "cpSeries": [596, 600, 604, 608, 612, 616, 620],
+      "threshold": 600,
+      "observation": "Short-term vigor is recovering while chill portions remain above threshold.",
+      "description": "The last 7 days show a mild recovery across all monitored plots.",
+      "trend": "Up",
+      "statusLabel": "Stable"
+    },
+    {
+      "id": "plot1-7days",
+      "plotId": "1",
+      "timeRange": "7days",
+      "labels": ["24 May", "25 May", "26 May", "27 May", "28 May", "29 May", "30 May"],
+      "ndviSeries": [0.66, 0.67, 0.67, 0.68, 0.68, 0.69, 0.69],
+      "cpSeries": [606, 610, 613, 616, 620, 625, 630],
+      "threshold": 600,
+      "observation": "Santa Rosa stays above the chill threshold with steady NDVI.",
+      "description": "Santa Rosa has maintained healthy vigor over the last 7 days.",
+      "trend": "Up",
+      "statusLabel": "Healthy"
+    },
+    {
+      "id": "plot2-7days",
+      "plotId": "2",
+      "timeRange": "7days",
+      "labels": ["24 May", "25 May", "26 May", "27 May", "28 May", "29 May", "30 May"],
+      "ndviSeries": [0.46, 0.45, 0.45, 0.44, 0.45, 0.44, 0.45],
+      "cpSeries": [466, 470, 474, 478, 482, 486, 490],
+      "threshold": 600,
+      "observation": "El Olivar remains below the chill threshold and needs attention.",
+      "description": "El Olivar shows a flat weekly trend with continued stress indicators.",
+      "trend": "Stable",
+      "statusLabel": "Review"
+    },
     {
       "id": "all-30days",
       "plotId": "all",
@@ -166,8 +270,8 @@
       "ndviSeries": [0.62, 0.64, 0.68, 0.7, 0.68, 0.67, 0.69],
       "cpSeries": [500, 520, 550, 580, 602, 615, 630],
       "threshold": 600,
-      "observation": "Sustained growth above the critical threshold.",
-      "description": "The 'Santa Rosa' plot shows optimal development with increasing vigor indices.",
+      "observation": "Crecimiento sostenido por encima del umbral crítico.",
+      "description": "El lote Santa Rosa muestra un desarrollo óptimo con índices de vigor ascendentes.",
       "trend": "Up",
       "statusLabel": "Healthy"
     },
@@ -179,9 +283,87 @@
       "ndviSeries": [0.42, 0.45, 0.44, 0.46, 0.45, 0.44, 0.45],
       "cpSeries": [400, 415, 430, 445, 460, 475, 490],
       "threshold": 600,
-      "observation": "Water stress detected, requires immediate review.",
-      "description": "The 'El Olivar' plot shows signs of moderate stress that impact the NDVI.",
+      "observation": "Estrés hídrico detectado, requiere revisión inmediata.",
+      "description": "Alerta: El lote El Olivar presenta signos de estrés moderado que impactan el NDVI.",
       "trend": "Down",
+      "statusLabel": "Review"
+    },
+    {
+      "id": "all-campaign",
+      "plotId": "all",
+      "timeRange": "campaign",
+      "labels": [
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May"
+      ],
+      "ndviSeries": [0.48, 0.51, 0.55, 0.58, 0.61, 0.64, 0.66, 0.62, 0.59, 0.57, 0.6, 0.63],
+      "cpSeries": [120, 185, 260, 340, 415, 490, 545, 575, 590, 604, 612, 620],
+      "threshold": 600,
+      "observation": "Campaign-level vigor closed above the chill threshold after a stable recovery period.",
+      "description": "The annual campaign view summarizes one year of NDVI and chill accumulation across all monitored plots.",
+      "trend": "Up",
+      "statusLabel": "Stable"
+    },
+    {
+      "id": "plot1-campaign",
+      "plotId": "1",
+      "timeRange": "campaign",
+      "labels": [
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May"
+      ],
+      "ndviSeries": [0.56, 0.59, 0.62, 0.65, 0.68, 0.7, 0.72, 0.69, 0.67, 0.66, 0.68, 0.69],
+      "cpSeries": [140, 215, 295, 380, 455, 525, 575, 602, 615, 622, 628, 630],
+      "threshold": 600,
+      "observation": "Santa Rosa completed the campaign with healthy vigor and chill accumulation above threshold.",
+      "description": "Santa Rosa shows a strong annual campaign with sustained NDVI recovery and chill portions meeting the target.",
+      "trend": "Up",
+      "statusLabel": "Healthy"
+    },
+    {
+      "id": "plot2-campaign",
+      "plotId": "2",
+      "timeRange": "campaign",
+      "labels": [
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May"
+      ],
+      "ndviSeries": [0.41, 0.43, 0.46, 0.48, 0.49, 0.47, 0.46, 0.44, 0.43, 0.44, 0.45, 0.45],
+      "cpSeries": [95, 150, 210, 280, 345, 405, 445, 468, 480, 486, 490, 490],
+      "threshold": 600,
+      "observation": "El Olivar remains below the chill threshold and should stay under review for the next campaign.",
+      "description": "El Olivar's annual campaign highlights persistent chill deficit and moderate NDVI stress indicators.",
+      "trend": "Stable",
       "statusLabel": "Review"
     }
   ],
@@ -229,32 +411,33 @@
   "iot-devices": [
     {
       "id": 1,
-      "name": "Soil Sensor Alpha-1",
+      "name": "Sensor Alpha-1",
       "plotId": 1,
-      "soilMoisture": 46,
+      "soilMoisture": 36,
       "temperature": 24,
-      "leafHumidity": 62,
+      "leafHumidity": 60,
       "status": "active",
-      "lastUpdate": "2026-05-12T13:54:59.729Z"
+      "lastUpdate": "2026-05-12T13:38:58.825Z"
     },
     {
       "id": 2,
-      "name": "Soil Sensor Beta-2",
+      "name": "Sensor Beta-2",
+      "plotId": 1,
       "soilMoisture": 12,
       "temperature": 28,
       "leafHumidity": 45,
       "status": "warning",
-      "lastUpdate": "2026-05-11T12:30:00Z"
+      "lastUpdate": "2026-05-11T11:00:00Z"
     },
     {
       "id": 3,
-      "name": "Leaf Sensor Gamma-3",
+      "name": "Sensor Gamma-3",
       "plotId": 2,
       "soilMoisture": 42,
       "temperature": 22,
       "leafHumidity": 70,
       "status": "active",
-      "lastUpdate": "2026-05-11T11:45:00Z"
+      "lastUpdate": "2026-05-11T09:20:00Z"
     }
   ]
 }

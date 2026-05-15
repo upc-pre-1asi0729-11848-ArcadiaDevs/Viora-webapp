@@ -96,9 +96,9 @@ export class SurveillanceStore {
     this.setLoading('alerts', true);
 
     const params = {
-      _limit: limit,
-      _sort: 'date',
-      _order: 'desc',
+      limit,
+      sortBy: 'date',
+      order: 'desc',
     };
 
     this.surveillanceApi
@@ -124,8 +124,8 @@ export class SurveillanceStore {
 
     this.surveillanceApi
       .getAlerts({
-        _sort: 'date',
-        _order: 'desc',
+        sortBy: 'date',
+        order: 'desc',
       })
       .pipe(
         take(1),

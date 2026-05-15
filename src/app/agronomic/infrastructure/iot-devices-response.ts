@@ -5,7 +5,7 @@
 import {
   BaseResource,
   BaseResponse,
-  CollectionResponse
+  CollectionResponse,
 } from '../../shared/infrastructure/base-response';
 
 export interface IotDeviceResource extends BaseResource {
@@ -22,7 +22,4 @@ export interface IotDevicesResponse extends BaseResponse {
   iotDevices: IotDeviceResource[];
 }
 
-export type IotDeviceCollectionResponse = CollectionResponse<
-  IotDeviceResource,
-  'iotDevices'
->;
+export type IotDeviceCollectionResponse = CollectionResponse<IotDeviceResource, 'iotDevices'>;

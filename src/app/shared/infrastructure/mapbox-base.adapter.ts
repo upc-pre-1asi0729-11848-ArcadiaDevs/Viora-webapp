@@ -15,17 +15,24 @@ export class MapboxBaseAdapter {
       return;
     }
 
-    const bounds = new mapboxgl.LngLatBounds(coordinates[0], coordinates[0]);
+    const bounds = new mapboxgl.LngLatBounds(
+      coordinates[0],
+      coordinates[0]
+    );
 
-    coordinates.forEach((coordinate) => bounds.extend(coordinate));
+    coordinates.forEach(coordinate => bounds.extend(coordinate));
 
     this.map.fitBounds(bounds, {
       padding: 50,
-      duration: 1500,
+      duration: 1500
     });
   }
 
-  addPolygon(id: string, coordinates: MapCoordinate[], color: string = '#FFFFFF'): void {
+  addPolygon(
+    id: string,
+    coordinates: MapCoordinate[],
+    color: string = '#FFFFFF'
+  ): void {
     if (!coordinates.length) {
       return;
     }
@@ -39,9 +46,9 @@ export class MapboxBaseAdapter {
         properties: {},
         geometry: {
           type: 'Polygon',
-          coordinates: [coordinates],
-        },
-      },
+          coordinates: [coordinates]
+        }
+      }
     });
 
     this.map.addLayer({
@@ -50,12 +57,16 @@ export class MapboxBaseAdapter {
       source: id,
       paint: {
         'line-color': color,
-        'line-width': 2,
-      },
+        'line-width': 2
+      }
     });
   }
 
-  addRasterLayer(id: string, tileUrl: string, opacity: number = 0.8): void {
+  addRasterLayer(
+    id: string,
+    tileUrl: string,
+    opacity: number = 0.8
+  ): void {
     if (!tileUrl) {
       return;
     }
@@ -65,7 +76,7 @@ export class MapboxBaseAdapter {
     this.map.addSource(id, {
       type: 'raster',
       tiles: [tileUrl],
-      tileSize: 256,
+      tileSize: 256
     });
 
     this.map.addLayer({
@@ -73,8 +84,8 @@ export class MapboxBaseAdapter {
       type: 'raster',
       source: id,
       paint: {
-        'raster-opacity': opacity,
-      },
+        'raster-opacity': opacity
+      }
     });
   }
 

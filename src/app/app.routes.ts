@@ -53,6 +53,21 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'producer/iot-devices',
+    redirectTo: 'agronomic/iot-devices',
+    pathMatch: 'full',
+  },
+  {
+    path: 'producer/iot-devices/new',
+    redirectTo: 'agronomic/iot-devices/new',
+    pathMatch: 'full',
+  },
+  {
+    path: 'producer/iot-devices/:id/edit',
+    redirectTo: 'agronomic/iot-devices/:id/edit',
+    pathMatch: 'full',
+  },
+  {
     path: 'dynamic-nutrition',
     redirectTo: 'agronomic/dynamic-nutrition',
     pathMatch: 'full',

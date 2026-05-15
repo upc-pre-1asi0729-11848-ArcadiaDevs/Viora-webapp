@@ -2,10 +2,7 @@
  * @file iot-device.assembler.ts
  * @description specialized assembler for mapping Iot Device resources to domain entities.
  */
-import {
-  IotDevice,
-  IotDeviceStatus
-} from '../domain/model/iot-device.entity';
+import { IotDevice, IotDeviceStatus } from '../domain/model/iot-device.entity';
 
 import { BaseAssembler } from '../../shared/infrastructure/base-assembler';
 import { IotDeviceResource } from './iot-devices-response';
@@ -25,7 +22,7 @@ export class IotDeviceAssembler extends BaseAssembler {
       temperature: resource?.temperature ?? 0,
       leafHumidity: resource?.leafHumidity ?? 0,
       status: this.toStatus(resource?.status),
-      lastUpdate: resource?.lastUpdate ?? ''
+      lastUpdate: resource?.lastUpdate ?? '',
     });
   }
 
@@ -35,7 +32,7 @@ export class IotDeviceAssembler extends BaseAssembler {
    * @returns {any[]}
    */
   static toEntitiesFromResources(resources: IotDeviceResource[] = []): IotDevice[] {
-    return this.toEntities(resources, resource => this.toEntityFromResource(resource));
+    return this.toEntities(resources, (resource) => this.toEntityFromResource(resource));
   }
 
   static toResourceFromEntity(device: IotDevice): IotDeviceResource {
@@ -47,15 +44,13 @@ export class IotDeviceAssembler extends BaseAssembler {
       temperature: device.temperature,
       leafHumidity: device.leafHumidity,
       status: device.status,
-      lastUpdate: device.lastUpdate
+      lastUpdate: device.lastUpdate,
     };
   }
 
   private static toStatus(value: string | undefined): IotDeviceStatus {
     const validStatuses: IotDeviceStatus[] = ['active', 'warning', 'critical', 'inactive'];
 
-    return validStatuses.includes(value as IotDeviceStatus)
-      ? value as IotDeviceStatus
-      : 'active';
+    return validStatuses.includes(value as IotDeviceStatus) ? (value as IotDeviceStatus) : 'active';
   }
 }

@@ -83,7 +83,7 @@ export class IotDeviceForm implements OnInit {
     {
       label: 'IoT Devices',
       labelKey: 'sidebar.iotDevices',
-      route: '/producer/iot-devices'
+      route: '/agronomic/iot-devices'
     },
     {
       label: this.isEdit ? 'Edit device' : 'New device',
@@ -164,7 +164,7 @@ export class IotDeviceForm implements OnInit {
   }
 
   protected navigateBack(): void {
-    this.router.navigate(['/producer/iot-devices']);
+    this.router.navigate(['/agronomic/iot-devices']);
   }
 
   protected hasFieldError(fieldName: string): boolean {

@@ -122,7 +122,7 @@ export class ProducerDashboard implements OnInit {
       label: 'IoT Devices',
       labelKey: 'toolbar.iotDevices',
       icon: 'memory',
-      route: '/producer/iot-devices'
+      route: '/agronomic/iot-devices'
     },
     {
       id: 'plot-overview',
@@ -148,18 +148,18 @@ export class ProducerDashboard implements OnInit {
       {
         label: 'Dashboard',
         labelKey: 'breadcrumbs.dashboard',
-        route: '/dashboard'
+        route: '/dashboard',
       },
       {
         label: 'Overview',
         labelKey: 'breadcrumbs.overview',
-        route: '/producer/dashboard'
+        route: '/dashboard',
       },
       {
         label: selectedPlot?.name ?? 'All plots',
         labelKey: selectedPlot ? undefined : 'dashboard.scope.allPlots',
-        disabled: true
-      }
+        disabled: true,
+      },
     ];
   });
 

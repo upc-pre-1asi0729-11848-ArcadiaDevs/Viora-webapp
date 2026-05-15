@@ -43,15 +43,15 @@ export class Plot {
    * @param {PhenologicalRiskLevel} [params.phenologicalRisk] - Phenological risk level.
    */
   constructor({
-                id = null,
-                name = '',
-                polygonCoordinates = [],
-                areaSize = 0,
-                lastUpdate = '',
-                currentImagery = null,
-                healthStatus = 'Healthy',
-                phenologicalRisk = 'Low'
-              }: PlotProperties = {}) {
+    id = null,
+    name = '',
+    polygonCoordinates = [],
+    areaSize = 0,
+    lastUpdate = '',
+    currentImagery = null,
+    healthStatus = 'Healthy',
+    phenologicalRisk = 'Low',
+  }: PlotProperties = {}) {
     this.id = id;
     this.name = name;
     this.polygonCoordinates = polygonCoordinates;
@@ -82,10 +82,7 @@ export class Plot {
     const firstCoordinate = this.polygonCoordinates[0];
     const lastCoordinate = this.polygonCoordinates[this.polygonCoordinates.length - 1];
 
-    return (
-      firstCoordinate[0] === lastCoordinate[0] &&
-      firstCoordinate[1] === lastCoordinate[1]
-    );
+    return firstCoordinate[0] === lastCoordinate[0] && firstCoordinate[1] === lastCoordinate[1];
   }
 
   get areaSizeLabel(): string {
