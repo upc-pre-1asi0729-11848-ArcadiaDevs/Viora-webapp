@@ -1,14 +1,14 @@
 export abstract class BaseAssembler {
   protected static toEntities<TResource, TEntity>(
     resources: TResource[] = [],
-    mapper: (resource: TResource) => TEntity,
+    mapper: (resource: TResource) => TEntity
   ): TEntity[] {
-    return resources.map((resource) => mapper(resource));
+    return resources.map(resource => mapper(resource));
   }
 
   protected static toFirstEntity<TResource, TEntity>(
     resources: TResource[] = [],
-    mapper: (resource: TResource) => TEntity,
+    mapper: (resource: TResource) => TEntity
   ): TEntity | null {
     const firstResource = resources.at(0);
 

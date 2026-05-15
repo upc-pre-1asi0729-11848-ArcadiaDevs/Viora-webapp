@@ -14,7 +14,9 @@ export type CollectionResponse<TResource, TKey extends string> =
 
 export function extractResourceCollection<TResource, TKey extends string>(
   response: CollectionResponse<TResource, TKey>,
-  key: TKey,
+  key: TKey
 ): TResource[] {
-  return Array.isArray(response) ? response : (response[key] ?? []);
+  return Array.isArray(response)
+    ? response
+    : response[key] ?? [];
 }
