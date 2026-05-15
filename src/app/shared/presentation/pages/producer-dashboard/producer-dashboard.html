@@ -1,0 +1,53 @@
+<section class="dashboard-page">
+  <app-dashboard-header
+    [breadcrumbs]="dashboardBreadcrumbs()"
+    [updatedLabel]="updatedAgoLabel()"
+    (refresh)="refreshDashboardData()" />
+
+  <app-dashboard-toolbar
+    [viewOptions]="dashboardToolbarViewOptions"
+    [scopeOptions]="dashboardScopeOptions()"
+    [selectedScope]="store.selectedDashboardScope()"
+    [selectedTimeRange]="store.selectedDashboardTimeRange()"
+    (scopeChange)="onDashboardScopeChange($event)"
+    (viewChange)="onDashboardViewChange($event)"
+    (timeRangeChange)="onDashboardTimeRangeChange($event)" />
+
+  <section class="kpi-grid">
+    <app-overall-plot-health-card />
+    <app-ndvi-status-card />
+    <app-chill-accumulation-card />
+    <app-yield-forecast-card />
+  </section>
+
+  <section class="iot-grid">
+    <app-iot-devices-card />
+
+    @for (sensor of store.dashboardInsightCards(); track sensor.id) {
+      <app-iot-sensor-card [sensor]="sensor" />
+    }
+
+    <div class="add-iot-card">
+      <h2>{{ 'dashboard.addIotDevice' | translate }}</h2>
+      <a routerLink="/producer/iot-devices/new" [attr.aria-label]="'dashboard.addIotDevice' | translate">+</a>
+    </div>
+  </section>
+
+  <section class="lower-grid">
+    <app-plot-overview-widget
+      id="plot-overview-section"
+      class="scroll-target" />
+
+    <app-weather-summary-card
+      id="weather-section"
+      class="scroll-target" />
+  </section>
+
+  <section class="surveillance-row">
+    <app-recent-alerts-card />
+    <app-recommended-actions-card />
+  </section>
+
+  <app-trend-analysis-card />
+
+</section>
