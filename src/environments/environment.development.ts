@@ -1,17 +1,23 @@
- export const environment = {
-     production: false,
-     platformProviderApiBaseUrl: 'http://localhost:3000/api/v1',
-     platformProviderPlotsEndpointPath: '/plots',
-     platformProviderAgronomicRecordsEndpointPath: '/agronomic-records',
-     platformProviderMonitoringSummariesEndpointPath: '/monitoring-summaries',
-     platformProviderWeatherSummariesEndpointPath: '/weather-summaries',
-     platformProviderYieldForecastsEndpointPath: '/yield-forecasts',
-     platformProviderRiskAssessmentsEndpointPath: '/risk-assessments',
-     platformProviderHealthDistributionEndpointPath: '/health-distribution',
-     platformProviderSignUpEndpointPath: '/authentication/sign-up',
-     platformProviderSignInEndpointPath: '/authentication/sign-in',
-     platformProviderUsersEndpointPath: '/users',
-     platformProviderAgronomicStatisticsEndpointPath: '/agronomic-statistics',
-     platformProviderAlertsEndpointPath: '/alerts',
-     platformProviderIotDevicesEndpointPath: '/iot-devices',
- };
+export const environment = {
+  production: false,
+
+  vioraPlatformApiUrl: 'http://localhost:3000/api/v1',
+
+  endpoints: {
+    plots: '/plots',
+    agronomicRecords: '/agronomic-records',
+    monitoringSummaries: '/monitoring-summaries',
+    weatherSummaries: '/weather-summaries',
+    yieldForecasts: '/yield-forecasts',
+    riskAssessments: '/risk-assessments',
+    healthDistribution: '/health-distribution',
+    iotDeviceSummaries: '/iot-device-summaries',
+    agronomicStatistics: '/agronomic-statistics',
+    alerts: '/alerts',
+    iotDevices: '/iot-devices',
+  },
+
+  mapbox: {
+    accessToken: 'YOUR_MAPBOX_PUBLIC_TOKEN_HERE',
+  },
+};
