@@ -1,0 +1,56 @@
+<mat-card class="weather-card">
+  <header class="weather-header">
+    <h2>{{ 'weather.title' | translate }}</h2>
+    <button mat-icon-button class="weather-header-button" [attr.aria-label]="'weather.details' | translate">
+      <img src="/assets/icons/general/cloud.svg" alt="" />
+    </button>
+  </header>
+
+  @if (store.weatherSummary(); as weather) {
+    <section class="weather-hero" [style.background-image]="heroBackgroundImage()">
+      @if (weather.icon) {
+        <img class="weather-hero-icon" [src]="weather.icon" [alt]="weather.condition" />
+      }
+
+      <span class="weather-time">{{ weather.updateTimeLabel }}</span>
+
+      <div class="weather-current">
+        <strong>{{ weather.temperatureLabel }}</strong>
+        <span>{{ weather.city }}</span>
+        <span>{{ weather.condition }}</span>
+      </div>
+    </section>
+
+    <section class="forecast-section">
+      <h3>{{ 'weather.forecast3Days' | translate }}</h3>
+
+      @if (todayForecast(); as forecast) {
+        <div class="forecast-row">
+          <span class="forecast-day">{{ forecast.dayLabel }}</span>
+          <strong>{{ forecast.minTemp.toFixed(0) }}°</strong>
+
+          <span class="temperature-range" [style.--temperature-progress]="temperatureProgress() + '%'">
+            <span class="temperature-range-fill"></span>
+          </span>
+
+          <strong>{{ forecast.maxTemp.toFixed(0) }}°</strong>
+          <mat-icon>chevron_right</mat-icon>
+        </div>
+      }
+    </section>
+
+    <section class="weather-metrics">
+      <div class="metric-row">
+        <span>{{ 'weather.temperatureAnomaly' | translate }}:</span>
+        <strong class="metric-pill">{{ weather.anomalyLabel }}</strong>
+      </div>
+
+      <div class="metric-row">
+        <span>{{ 'weather.climateRisk' | translate }}:</span>
+        <strong class="metric-pill risk-pill">{{ weather.climateRisk }}</strong>
+      </div>
+    </section>
+  } @else {
+    <div class="empty-state">{{ 'weather.loading' | translate }}</div>
+  }
+</mat-card>
