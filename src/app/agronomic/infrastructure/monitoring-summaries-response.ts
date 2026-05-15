@@ -8,7 +8,7 @@ import {
   CollectionResponse
 } from '../../shared/infrastructure/base-response';
 
-import { AgronomicRecordResource } from './agronomic-records-response';
+import { AgronomicRecordResource } from './agronomic-record-response';
 import { ChillHourRecordResource } from './chill-hour-records-response';
 import { OverallPlotHealthResource } from './overall-plot-health-response';
 import { YieldForecastResource } from './yield-forecasts-response';

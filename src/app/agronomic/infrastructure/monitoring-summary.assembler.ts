@@ -10,7 +10,7 @@ import { MonitoringSummaryResource } from './monitoring-summaries-response';
 import { AgronomicRecordAssembler } from './agronomic-record.assembler';
 import { ChillHourRecordAssembler } from './chill-hour-record.assembler';
 import { YieldForecastAssembler } from './yield-forecast.assembler';
-import { OverallPlotHealthAssembler } from './overall-plot-health.assembler';
+import { OverallPlotHealthAssembler } from './overall-plot-health-assembler';
 
 export class MonitoringSummaryAssembler extends BaseAssembler {
   /**
