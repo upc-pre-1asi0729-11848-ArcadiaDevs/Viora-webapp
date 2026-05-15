@@ -14,7 +14,7 @@ interface QuickAction {
   standalone: true,
   imports: [RouterLink],
   templateUrl: './quick-actions.html',
-  styleUrl: './quick-actions.css'
+  styleUrl: './quick-actions.css',
 })
 export class QuickActions {
   private readonly store = inject(AgronomicStore);
@@ -22,31 +22,29 @@ export class QuickActions {
   protected readonly queryParams = computed(() => {
     const selectedScope = this.store.selectedDashboardScope();
 
-    return selectedScope === 'all'
-      ? null
-      : { plotId: selectedScope };
+    return selectedScope === 'all' ? null : { plotId: selectedScope };
   });
 
   protected readonly actions: QuickAction[] = [
     {
       label: 'View plot details',
       iconPath: '/assets/icons/dashboard/file-tray-stacked-outline.svg',
-      route: '/plots/details'
+      route: '/agronomic/plots',
     },
     {
       label: 'Report symptoms',
       iconPath: '/assets/icons/dashboard/bug-outline.svg',
-      route: '/pest-surveillance/report-symptoms'
+      route: '/surveillance/pest-surveillance/report-symptoms',
     },
     {
       label: 'Open nutrition plan',
       iconPath: '/assets/icons/dashboard/leaf-outline.svg',
-      route: '/dynamic-nutrition/plan'
+      route: '/agronomic/dynamic-nutrition/plan',
     },
     {
       label: 'Request expert',
       iconPath: '/assets/icons/dashboard/people-outline.svg',
-      route: '/expert-assistance/request'
-    }
+      route: '/assistance/expert-assistance/request',
+    },
   ];
 }
