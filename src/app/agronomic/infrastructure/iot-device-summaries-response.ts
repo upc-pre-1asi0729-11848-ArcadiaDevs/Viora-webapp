@@ -5,7 +5,7 @@
 import {
   BaseResource,
   BaseResponse,
-  CollectionResponse
+  CollectionResponse,
 } from '../../shared/infrastructure/base-response';
 
 export interface IotSensorCardResource extends BaseResource {

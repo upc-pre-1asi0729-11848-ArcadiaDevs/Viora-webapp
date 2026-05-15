@@ -13,10 +13,14 @@ export class AgronomicMapAdapter extends MapboxBaseAdapter {
       this.addRasterLayer(
         'ndvi-imagery',
         plot.currentImagery.tileUrl,
-        plot.currentImagery.recommendedOpacity,
+        plot.currentImagery.recommendedOpacity
       );
     }
 
-    this.addPolygon('plot-boundary', plot.polygonCoordinates, '#FFFFFF');
+    this.addPolygon(
+      'plot-boundary',
+      plot.polygonCoordinates,
+      '#FFFFFF'
+    );
   }
 }

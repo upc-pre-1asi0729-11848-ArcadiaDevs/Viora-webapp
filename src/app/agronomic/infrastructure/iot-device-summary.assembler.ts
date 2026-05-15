@@ -6,13 +6,10 @@ import {
   IotDeviceSummary,
   IotRiskLevel,
   IotSensorCard,
-  IotTrend
+  IotTrend,
 } from '../domain/model/iot-device-summary.entity';
 
-import {
-  IotDeviceSummaryResource,
-  IotSensorCardResource
-} from './iot-device-summaries-response';
+import { IotDeviceSummaryResource, IotSensorCardResource } from './iot-device-summaries-response';
 import { BaseAssembler } from '../../shared/infrastructure/base-assembler';
 
 export class IotDeviceSummaryAssembler extends BaseAssembler {
@@ -22,14 +19,14 @@ export class IotDeviceSummaryAssembler extends BaseAssembler {
    * @returns {any}
    */
   static toEntityFromResource(
-    resource: IotDeviceSummaryResource | null | undefined
+    resource: IotDeviceSummaryResource | null | undefined,
   ): IotDeviceSummary {
     return new IotDeviceSummary({
       id: resource?.id ?? null,
       totalOnlineDevices: resource?.totalOnlineDevices ?? 0,
       plotsWithIot: resource?.plotsWithIot ?? 0,
       lastSync: resource?.lastSync ?? '',
-      sensorCards: this.toSensorCards(resource?.sensorCards ?? [])
+      sensorCards: this.toSensorCards(resource?.sensorCards ?? []),
     });
   }
 
@@ -38,10 +35,8 @@ export class IotDeviceSummaryAssembler extends BaseAssembler {
    * @param {Object[]} resources - Array of raw data points.
    * @returns {any[]}
    */
-  static toEntitiesFromResources(
-    resources: IotDeviceSummaryResource[] = []
-  ): IotDeviceSummary[] {
-    return this.toEntities(resources, resource => this.toEntityFromResource(resource));
+  static toEntitiesFromResources(resources: IotDeviceSummaryResource[] = []): IotDeviceSummary[] {
+    return this.toEntities(resources, (resource) => this.toEntityFromResource(resource));
   }
 
   /**
@@ -50,39 +45,38 @@ export class IotDeviceSummaryAssembler extends BaseAssembler {
    * @returns {any | null}
    */
   static toFirstEntityFromResources(
-    resources: IotDeviceSummaryResource[] = []
+    resources: IotDeviceSummaryResource[] = [],
   ): IotDeviceSummary | null {
-    return this.toFirstEntity(resources, resource => this.toEntityFromResource(resource));
+    return this.toFirstEntity(resources, (resource) => this.toEntityFromResource(resource));
   }
 
   private static toSensorCards(resources: IotSensorCardResource[]): IotSensorCard[] {
-    return resources.map(resource => new IotSensorCard({
-      id: resource.id ?? null,
-      plotId: resource.plotId ?? null,
-      title: resource.title ?? '',
-      sourceLabel: resource.sourceLabel ?? 'IoT',
-      metricLabel: resource.metricLabel ?? '',
-      metricValue: resource.metricValue ?? 0,
-      metricUnit: resource.metricUnit ?? '',
-      trend: this.toIotTrend(resource.trend),
-      riskLevel: this.toIotRiskLevel(resource.riskLevel),
-      recommendation: resource.recommendation ?? ''
-    }));
+    return resources.map(
+      (resource) =>
+        new IotSensorCard({
+          id: resource.id ?? null,
+          plotId: resource.plotId ?? null,
+          title: resource.title ?? '',
+          sourceLabel: resource.sourceLabel ?? 'IoT',
+          metricLabel: resource.metricLabel ?? '',
+          metricValue: resource.metricValue ?? 0,
+          metricUnit: resource.metricUnit ?? '',
+          trend: this.toIotTrend(resource.trend),
+          riskLevel: this.toIotRiskLevel(resource.riskLevel),
+          recommendation: resource.recommendation ?? '',
+        }),
+    );
   }
 
   private static toIotRiskLevel(value: string | undefined): IotRiskLevel {
     const validRiskLevels: IotRiskLevel[] = ['Low', 'Medium', 'High'];
 
-    return validRiskLevels.includes(value as IotRiskLevel)
-      ? value as IotRiskLevel
-      : 'Low';
+    return validRiskLevels.includes(value as IotRiskLevel) ? (value as IotRiskLevel) : 'Low';
   }
 
   private static toIotTrend(value: string | undefined): IotTrend {
     const validTrends: IotTrend[] = ['up', 'down', 'stable'];
 
-    return validTrends.includes(value as IotTrend)
-      ? value as IotTrend
-      : 'stable';
+    return validTrends.includes(value as IotTrend) ? (value as IotTrend) : 'stable';
   }
 }

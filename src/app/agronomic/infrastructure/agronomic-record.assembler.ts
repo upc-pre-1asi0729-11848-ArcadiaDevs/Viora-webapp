@@ -1,8 +1,18 @@
+/**
+ * @file agronomic-record.assembler.ts
+ * @description specialized assembler for mapping Agronomic Record resources to domain entities.
+ */
 import { AgronomicRecord, NdviTrend } from '../domain/model/agronomic-record.entity';
 
-import { AgronomicRecordResource } from './resources/agronomic-record.resource';
+import { BaseAssembler } from '../../shared/infrastructure/base-assembler';
+import { AgronomicRecordResource } from './agronomic-record-response';
 
-export class AgronomicRecordAssembler {
+export class AgronomicRecordAssembler extends BaseAssembler {
+  /**
+   * Transforms a single resource into an entity.
+   * @param {Object} resource - Raw data point.
+   * @returns {any}
+   */
   static toEntityFromResource(
     resource: AgronomicRecordResource | null | undefined,
   ): AgronomicRecord {
@@ -19,8 +29,13 @@ export class AgronomicRecordAssembler {
     });
   }
 
+  /**
+   * Transforms a collection of resources into entities.
+   * @param {Object[]} resources - Array of raw data points.
+   * @returns {any[]}
+   */
   static toEntitiesFromResources(resources: AgronomicRecordResource[] = []): AgronomicRecord[] {
-    return resources.map((resource) => this.toEntityFromResource(resource));
+    return this.toEntities(resources, (resource) => this.toEntityFromResource(resource));
   }
 
   private static toNdviTrend(value: string | undefined): NdviTrend {

@@ -1,4 +1,4 @@
-﻿import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectChange, MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
@@ -11,9 +11,16 @@ import { PlotMap } from '../plot-map/plot-map';
 @Component({
   selector: 'app-plot-overview-widget',
   standalone: true,
-  imports: [MatCardModule, MatSelectModule, MatIconModule, MatButtonModule, PlotMap, TranslatePipe],
+  imports: [
+    MatCardModule,
+    MatSelectModule,
+    MatIconModule,
+    MatButtonModule,
+    PlotMap,
+    TranslatePipe
+  ],
   templateUrl: './plot-overview-widget.html',
-  styleUrl: './plot-overview-widget.css',
+  styleUrl: './plot-overview-widget.css'
 })
 export class PlotOverviewWidget {
   protected readonly store = inject(AgronomicStore);

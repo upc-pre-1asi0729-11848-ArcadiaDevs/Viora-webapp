@@ -1,4 +1,4 @@
-﻿/**
+/**
  * @file satellite-imagery.entity.ts
  * @description Domain entity representing satellite imagery data.
  */
@@ -34,13 +34,13 @@ export class SatelliteImagery {
    * @param {number} [params.cloudPercentage] - Percentage of cloud cover.
    */
   constructor({
-    id = null,
-    plotId = null,
-    tileUrl = '',
-    captureDate = '',
-    ndviMean = 0,
-    cloudPercentage = 0,
-  }: SatelliteImageryProperties = {}) {
+                id = null,
+                plotId = null,
+                tileUrl = '',
+                captureDate = '',
+                ndviMean = 0,
+                cloudPercentage = 0
+              }: SatelliteImageryProperties = {}) {
     this.id = id;
     this.plotId = plotId;
     this.tileUrl = tileUrl;

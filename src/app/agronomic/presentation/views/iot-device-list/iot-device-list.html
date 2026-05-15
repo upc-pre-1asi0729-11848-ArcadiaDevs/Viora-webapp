@@ -6,12 +6,12 @@
 </app-dashboard-header>
 
   <section class="iot-list-toolbar">
-    <a mat-stroked-button routerLink="/producer/dashboard">
-      <mat-icon>arrow_back</mat-icon>
+    <a mat-stroked-button routerLink="/dashboard">
+    <mat-icon>arrow_back</mat-icon>
       {{ 'common.backToDashboard' | translate }}
     </a>
 
-    <a mat-stroked-button class="create-button" routerLink="/producer/iot-devices/new">
+    <a mat-stroked-button class="create-button" routerLink="/agronomic/iot-devices/new">
       <mat-icon>add</mat-icon>
       {{ 'dashboard.addIotDevice' | translate }}
     </a>
@@ -59,7 +59,7 @@
           </span>
 
           <div class="actions-cell">
-            <a mat-icon-button [routerLink]="['/producer/iot-devices', device.id, 'edit']">
+            <a mat-icon-button [routerLink]="['/agronomic/iot-devices', device.id, 'edit']">
               <mat-icon>edit</mat-icon>
             </a>
 

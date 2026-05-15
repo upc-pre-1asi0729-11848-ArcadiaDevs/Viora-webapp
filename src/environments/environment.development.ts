@@ -1,7 +1,7 @@
 export const environment = {
   production: false,
 
-  vioraPlatformApiUrl: 'http://localhost:3000/api/v1',
+  vioraPlatformApiUrl: 'https://69ff99d02b7ab349602fc9e2.mockapi.io/api/v1/',
 
   endpoints: {
     plots: '/plots',
@@ -11,6 +11,11 @@ export const environment = {
     yieldForecasts: '/yield-forecasts',
     riskAssessments: '/risk-assessments',
     healthDistribution: '/health-distribution',
+    categories: '/categories',
+    tutorials: '/tutorials',
+    signUp: '/authentication/sign-up',
+    signIn: '/authentication/sign-in',
+    users: '/users',
     iotDeviceSummaries: '/iot-device-summaries',
     agronomicStatistics: '/agronomic-statistics',
     alerts: '/alerts',

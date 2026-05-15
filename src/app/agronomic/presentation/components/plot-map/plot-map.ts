@@ -1,4 +1,4 @@
-﻿import {
+import {
   AfterViewInit,
   Component,
   ElementRef,
@@ -7,7 +7,7 @@
   OnDestroy,
   SimpleChanges,
   ViewChild,
-  inject,
+  inject
 } from '@angular/core';
 
 import { Plot } from '../../../domain/model/plot.entity';
@@ -19,7 +19,7 @@ import { PlotMapService } from '../../../application/plot-map.service';
   imports: [],
   providers: [PlotMapService],
   templateUrl: './plot-map.html',
-  styleUrl: './plot-map.css',
+  styleUrl: './plot-map.css'
 })
 export class PlotMap implements AfterViewInit, OnChanges, OnDestroy {
   @Input() plot: Plot | null = null;

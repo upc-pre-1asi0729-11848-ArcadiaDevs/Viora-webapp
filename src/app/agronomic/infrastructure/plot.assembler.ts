@@ -2,11 +2,7 @@
  * @file plot.assembler.ts
  * @description specialized assembler for mapping Plot resources to domain entities.
  */
-import {
-  PhenologicalRiskLevel,
-  Plot,
-  PlotHealthStatus
-} from '../domain/model/plot.entity';
+import { PhenologicalRiskLevel, Plot, PlotHealthStatus } from '../domain/model/plot.entity';
 
 import { BaseAssembler } from '../../shared/infrastructure/base-assembler';
 import { PlotResource } from './plots-response';
@@ -31,7 +27,7 @@ export class PlotAssembler extends BaseAssembler {
       lastUpdate: resource?.lastUpdate ?? '',
       currentImagery,
       healthStatus: this.toPlotHealthStatus(resource?.healthStatus),
-      phenologicalRisk: this.toPhenologicalRiskLevel(resource?.phenologicalRisk)
+      phenologicalRisk: this.toPhenologicalRiskLevel(resource?.phenologicalRisk),
     });
   }
 
@@ -41,14 +37,14 @@ export class PlotAssembler extends BaseAssembler {
    * @returns {any[]}
    */
   static toEntitiesFromResources(resources: PlotResource[] = []): Plot[] {
-    return this.toEntities(resources, resource => this.toEntityFromResource(resource));
+    return this.toEntities(resources, (resource) => this.toEntityFromResource(resource));
   }
 
   private static toPlotHealthStatus(value: string | undefined): PlotHealthStatus {
     const validStatuses: PlotHealthStatus[] = ['Healthy', 'Under Review', 'Critical'];
 
     return validStatuses.includes(value as PlotHealthStatus)
-      ? value as PlotHealthStatus
+      ? (value as PlotHealthStatus)
       : 'Healthy';
   }
 
@@ -56,7 +52,7 @@ export class PlotAssembler extends BaseAssembler {
     const validRiskLevels: PhenologicalRiskLevel[] = ['Low', 'Medium', 'High'];
 
     return validRiskLevels.includes(value as PhenologicalRiskLevel)
-      ? value as PhenologicalRiskLevel
+      ? (value as PhenologicalRiskLevel)
       : 'Low';
   }
 }

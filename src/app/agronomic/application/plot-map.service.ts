@@ -1,4 +1,4 @@
-﻿import { inject, Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Map as MapboxMap } from 'mapbox-gl';
 
 import { MapboxService } from '../../shared/infrastructure/mapbox.service';
