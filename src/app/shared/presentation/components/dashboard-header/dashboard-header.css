@@ -1,0 +1,85 @@
+.dashboard-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.dashboard-breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  color: #1f2523;
+  font-family: 'Poppins', sans-serif;
+}
+
+.breadcrumb-item {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #1f2523;
+  font: inherit;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.breadcrumb-item:not(.is-current):hover {
+  color: #2e4a3a;
+}
+
+.breadcrumb-item:disabled {
+  color: #1f2523;
+  opacity: 1;
+  cursor: default;
+}
+
+.breadcrumb-separator {
+  color: #1f2523;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.dashboard-header p {
+  margin: 8px 0 0;
+  color: #6b716d;
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Poppins', sans-serif;
+}
+
+.dashboard-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.updated-button,
+.refresh-button {
+  border-color: #2e4a3a;
+  color: #2e4a3a;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+}
+
+.refresh-button {
+  border: 0;
+}
+
+@media (max-width: 800px) {
+  .dashboard-header {
+    flex-direction: column;
+  }
+
+  .dashboard-actions {
+    flex-wrap: wrap;
+  }
+}
