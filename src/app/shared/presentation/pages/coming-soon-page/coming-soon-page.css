@@ -1,0 +1,91 @@
+:host {
+  display: block;
+  color: #1f2523;
+  font-family: 'Poppins', sans-serif;
+}
+
+:host ::ng-deep .mat-mdc-button-base {
+  font-family: 'Poppins', sans-serif;
+}
+
+.coming-soon-page {
+  min-height: 420px;
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  gap: 22px;
+  padding: 56px;
+  border: 1px solid #edf0ec;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 12px 30px rgba(31, 37, 35, 0.05);
+}
+
+.status-icon {
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: #f8f4ed;
+  color: #2e4a3a;
+}
+
+.status-icon mat-icon {
+  width: 34px;
+  height: 34px;
+  font-size: 34px;
+}
+
+.message {
+  max-width: 560px;
+}
+
+.message span {
+  display: block;
+  margin-bottom: 8px;
+  color: #6f7d73;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.message h1 {
+  margin: 0;
+  color: #1f2523;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0;
+}
+
+.message p {
+  margin: 12px 0 0;
+  color: #5e6962;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.coming-soon-page a {
+  height: 42px;
+  border-color: #2e4a3a;
+  border-radius: 8px;
+  color: #2e4a3a;
+  font-weight: 600;
+}
+
+.coming-soon-page a mat-icon {
+  margin-right: 8px;
+}
+
+@media (max-width: 700px) {
+  .coming-soon-page {
+    min-height: 360px;
+    padding: 32px 24px;
+  }
+
+  .message h1 {
+    font-size: 28px;
+  }
+}

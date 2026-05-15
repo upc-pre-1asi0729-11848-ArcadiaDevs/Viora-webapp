@@ -1,0 +1,15 @@
+<section class="quick-actions">
+  <h2>Quick Actions</h2>
+
+  <nav class="quick-actions-list" aria-label="Agronomic quick actions">
+    @for (action of actions; track action.label) {
+      <a
+        class="quick-action-item"
+        [routerLink]="action.route"
+        [queryParams]="queryParams()">
+        <img [src]="action.iconPath" alt="" class="quick-action-icon" />
+        <span>{{ action.label }}</span>
+      </a>
+    }
+  </nav>
+</section>
