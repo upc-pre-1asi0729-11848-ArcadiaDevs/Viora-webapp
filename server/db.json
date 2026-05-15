@@ -108,10 +108,31 @@
       "city": "Tacna",
       "currentTemp": 22,
       "condition": "Partly cloudy",
-      "lastUpdate": "2:34 pm",
+      "lastUpdate": "2026-05-11T19:34:00Z",
+      "icon": "/assets/images/weather/party_cloudy.png",
+      "backgroundImage": "/assets/images/weather/party_cloudy_background.png",
+      "forecast3Days": [
+        {
+          "dayLabel": "Today",
+          "minTemp": 19,
+          "maxTemp": 22,
+          "condition": "Partly cloudy"
+        },
+        {
+          "dayLabel": "Tomorrow",
+          "minTemp": 18,
+          "maxTemp": 23,
+          "condition": "Sunny intervals"
+        },
+        {
+          "dayLabel": "Wed",
+          "minTemp": 17,
+          "maxTemp": 21,
+          "condition": "Breezy"
+        }
+      ],
       "temperatureAnomaly": 1.5,
-      "climateRisk": "Medium",
-      "forecastTemp": 19
+      "climateRisk": "Medium"
     }
   ],
   "yield-forecasts": [
