@@ -4,11 +4,26 @@
       "id": 1,
       "name": "Santa Rosa",
       "polygonCoordinates": [
-        [-3.785, 37.842],
-        [-3.781, 37.842],
-        [-3.781, 37.845],
-        [-3.785, 37.845],
-        [-3.785, 37.842]
+        [
+          -3.785,
+          37.842
+        ],
+        [
+          -3.781,
+          37.842
+        ],
+        [
+          -3.781,
+          37.845
+        ],
+        [
+          -3.785,
+          37.845
+        ],
+        [
+          -3.785,
+          37.842
+        ]
       ],
       "areaSize": 12.5,
       "lastUpdate": "2026-05-04T21:00:00Z",
@@ -25,11 +40,26 @@
       "id": 2,
       "name": "El Olivar",
       "polygonCoordinates": [
-        [-4.778, 37.885],
-        [-4.774, 37.885],
-        [-4.774, 37.888],
-        [-4.778, 37.888],
-        [-4.778, 37.885]
+        [
+          -4.778,
+          37.885
+        ],
+        [
+          -4.774,
+          37.885
+        ],
+        [
+          -4.774,
+          37.888
+        ],
+        [
+          -4.778,
+          37.888
+        ],
+        [
+          -4.778,
+          37.885
+        ]
       ],
       "areaSize": 8.2,
       "lastUpdate": "2026-05-08T20:30:00Z",
@@ -128,9 +158,33 @@
       "id": "all-30days",
       "plotId": "all",
       "timeRange": "30days",
-      "labels": ["01 May", "05 May", "10 May", "15 May", "20 May", "25 May", "30 May"],
-      "ndviSeries": [0.55, 0.58, 0.62, 0.65, 0.61, 0.59, 0.63],
-      "cpSeries": [450, 480, 510, 545, 580, 605, 620],
+      "labels": [
+        "01 May",
+        "05 May",
+        "10 May",
+        "15 May",
+        "20 May",
+        "25 May",
+        "30 May"
+      ],
+      "ndviSeries": [
+        0.55,
+        0.58,
+        0.62,
+        0.65,
+        0.61,
+        0.59,
+        0.63
+      ],
+      "cpSeries": [
+        450,
+        480,
+        510,
+        545,
+        580,
+        605,
+        620
+      ],
       "threshold": 600,
       "observation": "Slight recovery after the last low-vigor event",
       "description": "Vegetation vigor remained stable during the last 30 days, with a slight improvement after the last update.",
@@ -141,9 +195,33 @@
       "id": "plot1-30days",
       "plotId": "1",
       "timeRange": "30days",
-      "labels": ["01 May", "05 May", "10 May", "15 May", "20 May", "25 May", "30 May"],
-      "ndviSeries": [0.62, 0.64, 0.68, 0.7, 0.68, 0.67, 0.69],
-      "cpSeries": [500, 520, 550, 580, 602, 615, 630],
+      "labels": [
+        "01 May",
+        "05 May",
+        "10 May",
+        "15 May",
+        "20 May",
+        "25 May",
+        "30 May"
+      ],
+      "ndviSeries": [
+        0.62,
+        0.64,
+        0.68,
+        0.7,
+        0.68,
+        0.67,
+        0.69
+      ],
+      "cpSeries": [
+        500,
+        520,
+        550,
+        580,
+        602,
+        615,
+        630
+      ],
       "threshold": 600,
       "observation": "Sustained growth above the critical threshold.",
       "description": "The 'Santa Rosa' plot shows optimal development with increasing vigor indices.",
@@ -154,9 +232,33 @@
       "id": "plot2-30days",
       "plotId": "2",
       "timeRange": "30days",
-      "labels": ["01 May", "05 May", "10 May", "15 May", "20 May", "25 May", "30 May"],
-      "ndviSeries": [0.42, 0.45, 0.44, 0.46, 0.45, 0.44, 0.45],
-      "cpSeries": [400, 415, 430, 445, 460, 475, 490],
+      "labels": [
+        "01 May",
+        "05 May",
+        "10 May",
+        "15 May",
+        "20 May",
+        "25 May",
+        "30 May"
+      ],
+      "ndviSeries": [
+        0.42,
+        0.45,
+        0.44,
+        0.46,
+        0.45,
+        0.44,
+        0.45
+      ],
+      "cpSeries": [
+        400,
+        415,
+        430,
+        445,
+        460,
+        475,
+        490
+      ],
       "threshold": 600,
       "observation": "Water stress detected, requires immediate review.",
       "description": "The 'El Olivar' plot shows signs of moderate stress that impact the NDVI.",
@@ -167,41 +269,41 @@
   "alerts": [
     {
       "id": 1,
-      "type": "Phenological risk",
-      "description": "Chill portions below seasonal threshold for flowering stage",
-      "severity": "High",
-      "date": "2026-05-04T10:30:00Z",
+      "type": "Pest symptom report",
+      "description": "Presence of cochinilla on leaves in northern sector of the plot",
+      "severity": "Critical",
+      "date": "2026-05-11T10:30:00Z",
       "status": "Active",
       "plot": {
         "name": "Santa Rosa",
-        "location": "Tacna",
-        "hectares": 4.2
+        "location": "La Yarada - Los Palos",
+        "hectares": 12.5
       }
     },
     {
       "id": 2,
-      "type": "Pest symptom report",
-      "description": "Possible bacterial symptoms reported in north block",
-      "severity": "Critical",
-      "date": "2026-05-03T14:20:00Z",
-      "status": "Suggest",
+      "type": "Low NDVI zone",
+      "description": "Detected anomalous drop in vegetation vigor near the well area",
+      "severity": "High",
+      "date": "2026-05-10T14:20:00Z",
+      "status": "Under review",
       "plot": {
-        "name": "Santa Rosa",
-        "location": "Tacna",
-        "hectares": 4.2
+        "name": "El Olivar",
+        "location": "Sama Inclán",
+        "hectares": 8.2
       }
     },
     {
       "id": 3,
-      "type": "Low NDVI zone",
-      "description": "Vegetation vigor dropped below target in low-vigor area",
+      "type": "Phenological risk",
+      "description": "High risk of flowering failure due to sudden temperature variance",
       "severity": "Medium",
-      "date": "2026-05-02T09:00:00Z",
-      "status": "Under review",
+      "date": "2026-05-11T02:00:00Z",
+      "status": "Suggest",
       "plot": {
-        "name": "La Esperanza",
-        "location": "La Yarada",
-        "hectares": 3.6
+        "name": "Santa Rosa",
+        "location": "La Yarada - Los Palos",
+        "hectares": 12.5
       }
     }
   ],
