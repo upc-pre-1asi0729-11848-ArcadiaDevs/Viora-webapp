@@ -1,48 +1,50 @@
-import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment';
-import { AlertResource } from './alert.assembler';
+import { Observable, map } from 'rxjs';
 
-export type AlertQueryParams = Record<string, string | number | boolean | null | undefined>;
+import { environment } from '../../../environments/environment';
+import { ApiQueryParams, BaseApi } from '../../shared/infrastructure/base-api';
+
+import { Alert } from '../domain/model/alert.entity';
+import { AlertCollectionResponse, AlertResource } from './alerts-response';
+import { AlertAssembler } from './alert.assembler';
+
+type SurveillanceQueryParams = ApiQueryParams;
 
 @Injectable({
   providedIn: 'root',
 })
-export class SurveillanceApiService {
-  private readonly baseUrl = environment.platformApiUrl ?? '';
-  private readonly alertsEndpointPath = environment.alertsEndpointPath ?? 'alerts';
+/**
+ * Infrastructure service gateway for the Surveillance bounded-context endpoints.
+ * Manages multiple specific endpoints for surveillance entities.
+ *
+ * @class SurveillanceApiService
+ * @extends BaseApi
+ */
+export class SurveillanceApiService extends BaseApi {
+  private readonly alertsEndpoint = this.endpoint(environment.endpoints.alerts);
 
-  constructor(private readonly http: HttpClient) {}
-
-  getAlerts(params: AlertQueryParams = {}): Observable<HttpResponse<AlertResource[]>> {
-    return this.http.get<AlertResource[]>(this.buildUrl(this.alertsEndpointPath), {
-      params: this.toHttpParams(params),
-      observe: 'response',
-    });
+  /**
+   * Fetches Alerts resources.
+   * @returns {Observable<Alert[]>}
+   */
+  getAlerts(params: SurveillanceQueryParams = {}): Observable<Alert[]> {
+    return this.http
+      .get<AlertCollectionResponse>(this.alertsEndpoint.collectionUrl, {
+        params: this.queryParams(params),
+      })
+      .pipe(
+        map((response) => this.collectionFrom(response, 'alerts')),
+        map((resources) => AlertAssembler.toEntitiesFromResources(resources)),
+      );
   }
 
-  getAlertById(id: number | string): Observable<HttpResponse<AlertResource>> {
-    return this.http.get<AlertResource>(this.buildUrl(`${this.alertsEndpointPath}/${id}`), {
-      observe: 'response',
-    });
-  }
-
-  private buildUrl(path: string): string {
-    const normalizedBaseUrl = this.baseUrl.replace(/\/$/, '');
-    const normalizedPath = path.replace(/^\//, '');
-    return `${normalizedBaseUrl}/${normalizedPath}`;
-  }
-
-  private toHttpParams(params: AlertQueryParams): HttpParams {
-    let httpParams = new HttpParams();
-
-    for (const [key, value] of Object.entries(params)) {
-      if (value !== null && value !== undefined) {
-        httpParams = httpParams.set(key, String(value));
-      }
-    }
-
-    return httpParams;
+  /**
+   * Fetches AlertById resources.
+   * @returns {Observable<Alert>}
+   */
+  getAlertById(id: number | string): Observable<Alert> {
+    return this.http
+      .get<AlertResource>(this.alertsEndpoint.resourceUrl(id))
+      .pipe(map((resource) => AlertAssembler.toEntityFromResource(resource)));
   }
 }
