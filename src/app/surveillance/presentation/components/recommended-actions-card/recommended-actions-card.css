@@ -1,0 +1,53 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
+.recommended-card {
+  height: 100%;
+  box-sizing: border-box;
+  padding: 22px 0;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 12px 30px rgba(31, 37, 35, 0.05);
+}
+
+.recommended-card h2 {
+  margin: 0 22px 22px;
+  color: #1f2523;
+  font-size: 18px;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+}
+
+.recommended-card nav {
+  display: grid;
+}
+
+.recommended-card a {
+  min-height: 66px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 22px;
+  border-top: 1px solid #edf0ec;
+  color: #4f4f4f;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+.recommended-card a:hover {
+  background: #f8f4ed;
+  color: #2e4a3a;
+}
+
+.recommended-card img {
+  width: 20px;
+  height: 20px;
+}

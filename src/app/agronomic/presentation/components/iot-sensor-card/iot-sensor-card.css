@@ -1,0 +1,96 @@
+.sensor-card {
+  height: 186px;
+  background: #FFFFFF;
+  box-sizing: border-box;
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(31, 37, 35, 0.05);
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 8px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #4f4f4f;
+}
+
+h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+}
+
+header span {
+  padding: 4px 10px;
+  border-radius: 5px;
+  background: #4F4F4F;
+  color: #ffffff;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.metric-row,
+.risk-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.metric-row {
+  margin-bottom: 8px;
+}
+
+.metric-row p,
+.risk-row p {
+  margin: 0;
+  color: #303630;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.metric-row strong {
+  font-size: 24px;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+}
+
+.metric-row small {
+  font-size: 15px;
+  color: #2e4a3a;
+}
+
+.risk-pill {
+  min-width: 90px;
+  padding: 4px 14px;
+  border-radius: 999px;
+  background: #4F4F4F;
+  color: #ffffff;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #ece8e0;
+  color: #8C877F;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+}
+
+footer mat-icon {
+  font-size: 17px;
+  width: 17px;
+  height: 17px;
+}

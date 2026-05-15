@@ -1,0 +1,36 @@
+<mat-card class="iot-card">
+  <h2>{{ 'cards.iot.title' | translate }}</h2>
+
+  @if (agronomicStore.devicesLoaded()) {
+    <div class="iot-line">
+      <span class="status-dot"></span>
+      <span>
+        @if (agronomicStore.selectedDashboardScope() === 'all') {
+          {{ 'cards.iot.devicesOnline' | translate: { count: agronomicStore.onlineDevicesCount() } }}
+        } @else {
+          {{ 'cards.iot.sensorsOnline' | translate: { count: agronomicStore.onlineDevicesCount() } }}
+        }
+      </span>
+    </div>
+
+    <div class="iot-line">
+      <span class="status-dot"></span>
+      <span>
+        @if (agronomicStore.selectedDashboardScope() === 'all') {
+          {{ 'cards.iot.plotsWithIot' | translate: { count: agronomicStore.plotsWithIotCount() } }}
+        } @else if (agronomicStore.selectedDashboardPlot(); as plot) {
+          {{ 'cards.iot.selectedPlotScope' | translate: { plot: plot.name } }}
+        } @else {
+          {{ 'cards.iot.selectedScope' | translate }}
+        }
+      </span>
+    </div>
+
+    <footer>
+      <mat-icon>info</mat-icon>
+      <span>{{ agronomicStore.lastSyncLabel() }}</span>
+    </footer>
+  } @else {
+    <p class="empty">{{ 'cards.iot.loading' | translate }}</p>
+  }
+</mat-card>

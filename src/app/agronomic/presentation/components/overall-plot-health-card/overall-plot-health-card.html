@@ -1,0 +1,19 @@
+<mat-card class="kpi-card">
+  <h2>{{ 'cards.overallHealth.title' | translate }}</h2>
+  <p>{{ 'cards.overallHealth.status' | translate }}</p>
+
+  @if (store.selectedDashboardPlot(); as plot) {
+    <span class="status-pill">{{ plot.healthStatus }}</span>
+    <div class="card-footer">
+      {{ plot.name }} / {{ plot.areaSizeLabel }}
+    </div>
+  } @else if (store.monitoringSummary()?.overallPlotHealth; as health) {
+    <span class="status-pill">{{ health.status }}</span>
+    <div class="card-footer">
+      {{ health.summaryLabel }}
+    </div>
+  } @else {
+    <span class="status-pill muted">{{ 'common.loading' | translate }}</span>
+    <div class="card-footer">{{ 'cards.overallHealth.waiting' | translate }}</div>
+  }
+</mat-card>

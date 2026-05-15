@@ -1,0 +1,87 @@
+<mat-card class="plot-overview-card">
+  <header class="plot-header">
+    <h2>{{ 'plotOverview.title' | translate }}</h2>
+
+    <div class="plot-actions">
+      <button mat-icon-button class="icon-button" [attr.aria-label]="'plotOverview.openSelectedPlot' | translate">
+        <mat-icon>arrow_forward</mat-icon>
+      </button>
+
+      <mat-select
+        class="plot-select"
+        [value]="store.selectedMapPlotId()"
+        (selectionChange)="onPlotSelected($event)"
+        [attr.aria-label]="'plotOverview.selectPlot' | translate">
+
+        @for (plot of store.plots(); track plot.id) {
+          <mat-option [value]="plot.id">
+            {{ plot.name }}
+          </mat-option>
+        }
+      </mat-select>
+    </div>
+  </header>
+
+  @if (selectedPlot(); as plot) {
+    <section class="plot-content">
+      <div class="map-wrapper">
+        <app-plot-map [plot]="plot" />
+      </div>
+
+      <aside class="plot-details">
+        <section class="detail-block">
+          <h3 class="detail-title">{{ 'plotOverview.healthStatus' | translate }}</h3>
+          <span
+            class="status-pill"
+            [class.status-healthy]="plot.healthStatus === 'Healthy'"
+            [class.status-under-review]="plot.healthStatus === 'Under Review'"
+            [class.status-critical]="plot.healthStatus === 'Critical'">
+            {{ plot.healthStatus }}
+          </span>
+        </section>
+
+        <section class="detail-block">
+          <h3 class="detail-title">{{ 'plotOverview.phenologicalRisk' | translate }}</h3>
+          <span
+            class="risk-pill"
+            [class.risk-low]="plot.phenologicalRisk === 'Low'"
+            [class.risk-medium]="plot.phenologicalRisk === 'Medium'"
+            [class.risk-high]="plot.phenologicalRisk === 'High'">
+            {{ plot.phenologicalRisk }}
+          </span>
+        </section>
+
+        <section class="detail-block row">
+          <h3 class="detail-title">NDVI</h3>
+          <strong class="ndvi-value">
+            {{ store.selectedPlotNdviLabel() }}
+            <mat-icon
+              class="trend"
+              [class.trend-up]="selectedRecord()?.ndviTrend === 'up'"
+              [class.trend-down]="selectedRecord()?.ndviTrend === 'down'"
+              [class.trend-stable]="selectedRecord()?.ndviTrend === 'stable' || !selectedRecord()">
+              {{ ndviTrendIcon() }}
+            </mat-icon>
+          </strong>
+        </section>
+
+        <section class="detail-block update-block">
+          <h3 class="detail-title update-title">{{ 'plotOverview.lastUpdate' | translate }}</h3>
+          <span class="update-pill">{{ store.selectedPlotLastUpdateLabel() }}</span>
+        </section>
+
+        <footer class="recommendation">
+          <mat-icon>info_outline</mat-icon>
+          <span>
+            <span class="recommendation-label">{{ 'plotOverview.recommendedAction' | translate }}:</span>
+            {{ recommendation() | translate }}
+          </span>
+        </footer>
+      </aside>
+    </section>
+  } @else {
+    <section class="empty-state">
+      {{ 'plotOverview.loading' | translate }}
+    </section>
+  }
+</mat-card>

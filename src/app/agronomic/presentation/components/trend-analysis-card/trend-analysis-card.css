@@ -1,0 +1,132 @@
+.trend-card {
+  padding: 28px;
+  border-radius: 18px;
+  background: #ffffff;
+  box-shadow: 0 12px 30px rgba(31, 37, 35, 0.05);
+  font-family: 'Poppins', sans-serif;
+}
+
+.trend-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.trend-header h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  color: #1f2523;
+}
+
+.trend-header p {
+  margin: 8px 0 0;
+  color: #8a8f8b;
+  font-size: 14px;
+}
+
+.trend-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.trend-scope {
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: #f8f4ed;
+  color: #2e4a3a;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.plot-select {
+  width: 180px;
+  height: 36px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #2e4a3a;
+  border-radius: 8px;
+  color: #2e4a3a;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.range-select {
+  width: 142px;
+}
+
+::ng-deep .plot-select .mat-mdc-select-value,
+::ng-deep .plot-select .mat-mdc-select-arrow {
+  color: #2e4a3a;
+}
+
+::ng-deep .trend-select-panel .mdc-list-item__primary-text {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.trend-description {
+  max-width: 900px;
+  margin: 0 auto 28px;
+  color: #666b68;
+  text-align: center;
+  font-size: 15px;
+}
+
+.chart-wrapper {
+  height: 430px;
+  margin-bottom: 24px;
+}
+
+.trend-footer {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 18px;
+}
+
+.trend-footer span {
+  min-height: 36px;
+  display: grid;
+  place-items: center;
+  padding: 0 16px;
+  border-radius: 8px;
+  background: #f8f4ed;
+  color: #1f2523;
+  font-size: 15px;
+}
+
+.trend-footer .status {
+  background: #d9f8e7;
+  color: #2e4a3a;
+}
+
+.empty-state {
+  min-height: 280px;
+  display: grid;
+  place-items: center;
+  color: #8a8f8b;
+}
+
+@media (max-width: 1000px) {
+  .trend-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .trend-controls {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .trend-footer {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,59 @@
+<mat-card class="trend-card">
+  <header class="trend-header">
+    <div>
+      <h2>{{ 'trend.title' | translate }}</h2>
+      <p>{{ 'trend.subtitle' | translate }}</p>
+    </div>
+
+    <div class="trend-controls">
+      <mat-select
+        class="plot-select"
+        panelClass="trend-select-panel"
+        [value]="store.selectedTrendPlotId()"
+        (selectionChange)="onTrendPlotSelected($event)"
+        [attr.aria-label]="'trend.selectPlot' | translate">
+        <mat-option value="all">{{ 'dashboard.scope.allPlots' | translate }}</mat-option>
+
+        @for (plot of store.plots(); track plot.id) {
+          <mat-option [value]="plot.id">{{ plot.name }}</mat-option>
+        }
+      </mat-select>
+
+      <mat-select
+        class="plot-select range-select"
+        panelClass="trend-select-panel"
+        [value]="store.selectedTrendTimeRange()"
+        (selectionChange)="onTrendTimeRangeSelected($event)"
+        [attr.aria-label]="'trend.selectTimeRange' | translate">
+        @for (option of timeRangeOptions; track option.value) {
+          <mat-option [value]="option.value">{{ option.labelKey | translate }}</mat-option>
+        }
+      </mat-select>
+    </div>
+  </header>
+
+  @if (store.trendAgronomicStatistics(); as statistics) {
+    <p class="trend-description">
+      {{ statistics.description }}
+    </p>
+
+    <section class="chart-wrapper">
+      <canvas
+        baseChart
+        [type]="chartType"
+        [data]="chartData()"
+        [options]="chartOptions">
+      </canvas>
+    </section>
+
+    <footer class="trend-footer">
+      <span>{{ 'trend.currentValue' | translate }}: {{ statistics.currentNdviLabel }}</span>
+      <span>{{ 'trend.observation' | translate }}: {{ statistics.observation }}</span>
+      <span class="status">{{ statistics.trendLabel }}</span>
+    </footer>
+  } @else {
+    <section class="empty-state">
+      {{ 'trend.loading' | translate }}
+    </section>
+  }
+</mat-card>

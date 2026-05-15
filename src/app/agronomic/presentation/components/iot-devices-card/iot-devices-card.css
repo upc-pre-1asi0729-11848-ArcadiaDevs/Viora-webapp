@@ -1,0 +1,59 @@
+.iot-card {
+  height: 186px;
+  background: #FFFFFF;
+  box-sizing: border-box;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(31, 37, 35, 0.05);
+}
+
+h2 {
+  margin: 0 0 16px;
+  font-size: 18px;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+}
+
+.iot-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  color: #2E4A3A;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.status-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: #57EBA1;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 26px;
+  padding-top: 12px;
+  border-top: 1px solid #ece8e0;
+  color: #8C877F;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+}
+
+footer mat-icon {
+  font-size: 17px;
+  width: 17px;
+  height: 17px;
+}
+
+.empty {
+  color: #8C877F;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+}

@@ -1,0 +1,23 @@
+:host {
+  display: inline-flex;
+}
+
+.language-select {
+  width: 112px;
+  min-height: 36px;
+  box-sizing: border-box;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #2e4a3a;
+  border-radius: 8px;
+  color: #2e4a3a;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+}
+
+.language-select ::ng-deep .mat-mdc-select-value,
+.language-select ::ng-deep .mat-mdc-select-arrow {
+  color: #2e4a3a;
+}

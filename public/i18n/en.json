@@ -1,0 +1,179 @@
+{
+  "common": {
+    "updated": "Updated",
+    "loading": "Loading",
+    "risk": "Risk",
+    "backToDashboard": "Back to dashboard",
+    "cancel": "Cancel",
+    "somethingWrong": "Something went wrong"
+  },
+  "risk": {
+    "Low": "Low",
+    "Medium": "Medium",
+    "High": "High"
+  },
+  "breadcrumbs": {
+    "dashboard": "Dashboard",
+    "overview": "Overview"
+  },
+  "time": {
+    "current": "Current",
+    "7days": "7 days",
+    "30days": "30 days",
+    "campaign": "Campaign"
+  },
+  "sidebar": {
+    "brand": "Viora Dashboard",
+    "navigation": "Dashboard navigation",
+    "expand": "Expand sidebar",
+    "collapse": "Collapse sidebar",
+    "dashboard": "Dashboard",
+    "myPlots": "My plots",
+    "iotDevices": "IoT Devices",
+    "alerts": "Alerts",
+    "dynamicNutrition": "Dynamic Nutrition",
+    "pestSurveillance": "Pest Surveillance",
+    "expertAssistance": "Expert Assistance",
+    "expenseHistory": "Expense History",
+    "settings": "Settings",
+    "subscription": "Subscription",
+    "support": "Support",
+    "welcomeBack": "Welcome back",
+    "openProfile": "Open profile"
+  },
+  "toolbar": {
+    "dashboard": "Dashboard",
+    "iotDevices": "IoT Devices",
+    "plotOverview": "Plot Overview",
+    "weather": "Weather",
+    "selectScope": "Select dashboard plot scope"
+  },
+  "dashboard": {
+    "scope": {
+      "allPlots": "All Plots"
+    },
+    "addIotDevice": "Add IoT Device"
+  },
+  "cards": {
+    "overallHealth": {
+      "title": "Overall Plot Health",
+      "status": "Status",
+      "waiting": "Waiting for farm summary"
+    },
+    "ndvi": {
+      "title": "NDVI Status",
+      "loading": "Loading NDVI records"
+    },
+    "chill": {
+      "title": "Chill Accumulation",
+      "loading": "Loading chill accumulation"
+    },
+    "yield": {
+      "title": "Yield Forecast",
+      "loading": "Loading yield forecast"
+    },
+    "iot": {
+      "title": "IoT Devices",
+      "devicesOnline": "{{count}} devices online",
+      "sensorsOnline": "{{count}} sensors online",
+      "plotsWithIot": "{{count}} plots with IoT",
+      "selectedPlotScope": "{{plot}} IoT scope",
+      "selectedScope": "Selected plot IoT scope",
+      "loading": "Loading IoT devices",
+      "waterStress": "Water Stress",
+      "soilMoisture": "Soil moisture",
+      "soilTemperature": "Soil temperature",
+      "moistureHigh": "Irrigation attention required.",
+      "moistureMedium": "Monitor soil moisture trend.",
+      "moistureLow": "Moisture conditions are stable.",
+      "temperatureHigh": "Temperature may increase water stress.",
+      "temperatureMedium": "Watch temperature exposure.",
+      "temperatureLow": "Temperature is within expected range."
+    }
+  },
+  "plotOverview": {
+    "title": "Plot Overview",
+    "openSelectedPlot": "Open selected plot",
+    "selectPlot": "Select plot",
+    "healthStatus": "Health Status",
+    "phenologicalRisk": "Phenological Risk",
+    "lastUpdate": "Last recorded update",
+    "recommendedAction": "Recommended action",
+    "loading": "Loading plot overview...",
+    "recommendations": {
+      "waiting": "Waiting for plot data",
+      "inspect": "Prioritize field inspection and mitigation plan",
+      "nutrition": "Review nutrition plan",
+      "monitoring": "Continue regular monitoring"
+    }
+  },
+  "weather": {
+    "title": "Weather Summary",
+    "details": "Weather details",
+    "forecast3Days": "3-Day forecast",
+    "temperatureAnomaly": "Temperature anomaly",
+    "climateRisk": "Climate risk",
+    "loading": "Loading weather summary"
+  },
+  "trend": {
+    "title": "Trend Analysis / NDVI",
+    "subtitle": "Vegetation Vigor Index vs. Accumulated Chill Portions",
+    "selectPlot": "Select trend analysis plot",
+    "selectTimeRange": "Select trend analysis time range",
+    "currentValue": "Current value",
+    "observation": "Observation",
+    "loading": "Loading trend analysis"
+  },
+  "alerts": {
+    "title": "Recent Alerts",
+    "search": "Search",
+    "type": "Alert type",
+    "plot": "Plot",
+    "severity": "Severity",
+    "date": "Date",
+    "status": "Status",
+    "loading": "Loading recent alerts"
+  },
+  "recommended": {
+    "title": "Recommended Actions",
+    "nutrition": "Review nutrition plan",
+    "expert": "Request expert assistance",
+    "inspect": "Inspect low-vigor area",
+    "symptoms": "Report new symptoms"
+  },
+  "comingSoon": {
+    "title": "We're working on this",
+    "message": "This section is not available yet. You can continue monitoring your producer dashboard while we finish it."
+  },
+  "iotList": {
+    "subtitle": "Manage connected field devices and telemetry readings.",
+    "liveData": "Live data",
+    "name": "Name",
+    "leafHumidity": "Leaf humidity",
+    "actions": "Actions",
+    "empty": "No IoT devices registered yet."
+  },
+  "iotForm": {
+    "newSubtitle": "Register an external IoT device connected to a monitored plot.",
+    "editSubtitle": "Update device telemetry configuration and monitoring status.",
+    "formMode": "Form mode",
+    "backToIot": "Back to IoT devices",
+    "generalInfo": "General Information",
+    "deviceName": "Device name",
+    "devicePlaceholder": "Sensor Alpha-1",
+    "deviceNameRequired": "Device name is required.",
+    "plotRequired": "Plot is required.",
+    "telemetryCalibration": "Telemetry Calibration",
+    "percentError": "Enter a value from 0 to 100.",
+    "temperatureError": "Enter a valid temperature.",
+    "saveDevice": "Save device",
+    "newDevice": "New device",
+    "editDevice": "Edit device",
+    "status": {
+      "active": "Active",
+      "warning": "Warning",
+      "critical": "Critical",
+      "inactive": "Inactive"
+    }
+  }
+}
