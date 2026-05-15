@@ -1,4 +1,13 @@
-export type OverallPlotHealthStatus = 'Healthy' | 'Warning' | 'Under Review' | 'Critical';
+/**
+ * @file overall-plot-health.entity.ts
+ * @description Domain entity representing the aggregated health status of all plots.
+ */
+
+export type OverallPlotHealthStatus =
+  | 'Healthy'
+  | 'Warning'
+  | 'Under Review'
+  | 'Critical';
 
 export interface OverallPlotHealthProperties {
   status?: OverallPlotHealthStatus;
@@ -11,11 +20,17 @@ export class OverallPlotHealth {
   readonly healthyPlotsCount: number;
   readonly reviewPlotsCount: number;
 
+  /**
+   * @param {OverallPlotHealthProperties} params - Entity data.
+   * @param {OverallPlotHealthStatus} [params.status] - Overall status label.
+   * @param {number} [params.healthyPlotsCount] - Number of healthy plots.
+   * @param {number} [params.reviewPlotsCount] - Number of plots under review.
+   */
   constructor({
-    status = 'Healthy',
-    healthyPlotsCount = 0,
-    reviewPlotsCount = 0,
-  }: OverallPlotHealthProperties = {}) {
+                status = 'Healthy',
+                healthyPlotsCount = 0,
+                reviewPlotsCount = 0
+              }: OverallPlotHealthProperties = {}) {
     this.status = status;
     this.healthyPlotsCount = healthyPlotsCount;
     this.reviewPlotsCount = reviewPlotsCount;

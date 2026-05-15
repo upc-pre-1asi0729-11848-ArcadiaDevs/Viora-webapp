@@ -1,15 +1,16 @@
 import { Component, computed, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { TranslatePipe } from '@ngx-translate/core';
 
-import { AgronomicStore } from '../../../../application/agronomic.store';
+import { AgronomicStore } from '../../../application/agronomic.store';
 
 @Component({
   selector: 'app-ndvi-status-card',
   standalone: true,
-  imports: [MatCardModule, MatProgressBarModule],
+  imports: [MatCardModule, MatProgressBarModule, TranslatePipe],
   templateUrl: './ndvi-status-card.html',
-  styleUrl: './ndvi-status-card.css',
+  styleUrl: './ndvi-status-card.css'
 })
 export class NdviStatusCard {
   protected readonly store = inject(AgronomicStore);

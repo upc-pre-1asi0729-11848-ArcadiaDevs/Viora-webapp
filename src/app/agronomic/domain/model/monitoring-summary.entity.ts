@@ -1,3 +1,7 @@
+/**
+ * @file monitoring-summary.entity.ts
+ * @description Domain entity representing an aggregated summary of agronomic monitoring data.
+ */
 import { AgronomicRecord } from './agronomic-record.entity';
 import { ChillHourRecord } from './chill-hour-record.entity';
 import { YieldForecast } from './yield-forecast.entity';
@@ -8,10 +12,10 @@ export type MonitoringSummaryId = number | string | null;
 export interface MonitoringSummaryProperties {
   id?: MonitoringSummaryId;
   period?: string;
-  ndvi?: AgronomicRecord | Record<string, unknown> | null;
-  chillAccumulation?: ChillHourRecord | Record<string, unknown> | null;
-  yieldForecast?: YieldForecast | Record<string, unknown> | null;
-  overallHealth?: OverallPlotHealth | Record<string, unknown> | null;
+  latestNdvi?: AgronomicRecord;
+  chillHourRecord?: ChillHourRecord;
+  yieldForecast?: YieldForecast;
+  overallPlotHealth?: OverallPlotHealth;
   updatedAt?: string;
 }
 
@@ -24,35 +28,31 @@ export class MonitoringSummary {
   readonly overallPlotHealth: OverallPlotHealth;
   readonly updatedAt: string;
 
+  /**
+   * @param {MonitoringSummaryProperties} params - Entity data.
+   * @param {MonitoringSummaryId} [params.id] - Unique identifier.
+   * @param {string} [params.period] - Time period for the summary.
+   * @param {AgronomicRecord} [params.latestNdvi] - Latest NDVI record.
+   * @param {ChillHourRecord} [params.chillHourRecord] - Chill hours summary.
+   * @param {YieldForecast} [params.yieldForecast] - Current yield forecast.
+   * @param {OverallPlotHealth} [params.overallPlotHealth] - Aggregated plot health.
+   * @param {string} [params.updatedAt] - Last update timestamp.
+   */
   constructor({
-    id = null,
-    period = 'current',
-    ndvi = null,
-    chillAccumulation = null,
-    yieldForecast = null,
-    overallHealth = null,
-    updatedAt = '',
-  }: MonitoringSummaryProperties = {}) {
+                id = null,
+                period = 'current',
+                latestNdvi = new AgronomicRecord(),
+                chillHourRecord = new ChillHourRecord(),
+                yieldForecast = new YieldForecast(),
+                overallPlotHealth = new OverallPlotHealth(),
+                updatedAt = ''
+              }: MonitoringSummaryProperties = {}) {
     this.id = id;
     this.period = period;
-
-    this.latestNdvi = ndvi instanceof AgronomicRecord ? ndvi : new AgronomicRecord(ndvi ?? {});
-
-    this.chillHourRecord =
-      chillAccumulation instanceof ChillHourRecord
-        ? chillAccumulation
-        : new ChillHourRecord(chillAccumulation ?? {});
-
-    this.yieldForecast =
-      yieldForecast instanceof YieldForecast
-        ? yieldForecast
-        : new YieldForecast(yieldForecast ?? {});
-
-    this.overallPlotHealth =
-      overallHealth instanceof OverallPlotHealth
-        ? overallHealth
-        : new OverallPlotHealth(overallHealth ?? {});
-
+    this.latestNdvi = latestNdvi;
+    this.chillHourRecord = chillHourRecord;
+    this.yieldForecast = yieldForecast;
+    this.overallPlotHealth = overallPlotHealth;
     this.updatedAt = updatedAt;
   }
 

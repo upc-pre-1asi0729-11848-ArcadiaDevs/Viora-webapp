@@ -1,5 +1,5 @@
 <mat-card class="kpi-card">
-  <h2>NDVI Status</h2>
+  <h2>{{ 'cards.ndvi.title' | translate }}</h2>
 
   @if (store.latestAgronomicRecord(); as record) {
     <div class="metric-row">
@@ -15,6 +15,6 @@
       style="--mdc-linear-progress-active-indicator-color: #2E4A3A; --mdc-linear-progress-track-color: #e0e0e0;">
     </mat-progress-bar>
   } @else {
-    <div class="empty-state">Loading NDVI records</div>
+    <div class="empty-state">{{ 'cards.ndvi.loading' | translate }}</div>
   }
 </mat-card>
