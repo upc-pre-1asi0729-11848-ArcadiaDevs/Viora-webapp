@@ -1,7 +1,7 @@
 <mat-card class="kpi-card">
-  <h2>Chill Accumulation</h2>
+  <h2>{{ 'cards.chill.title' | translate }}</h2>
 
-  @if (store.chillHourRecord(); as chill) {
+  @if (store.selectedChillHourRecord(); as chill) {
     <strong class="main-value">{{ chill.chillPortionsLabel }}</strong>
 
     <span class="blue-pill">{{ chill.weeklyDiffLabel }}</span>
@@ -12,6 +12,6 @@
       style="--mdc-linear-progress-active-indicator-color: #5B8DEF; --mdc-linear-progress-track-color: #e0e0e0;">
     </mat-progress-bar>
   } @else {
-    <div class="empty-state">Loading chill accumulation</div>
+    <div class="empty-state">{{ 'cards.chill.loading' | translate }}</div>
   }
 </mat-card>
