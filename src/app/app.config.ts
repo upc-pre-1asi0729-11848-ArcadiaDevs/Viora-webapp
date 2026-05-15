@@ -16,7 +16,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     {
       provide: TitleStrategy,
-      useClass: DashboardTitleStrategy
+      useClass: DashboardTitleStrategy,
     },
     provideHttpClient(),
     provideAnimationsAsync(),
